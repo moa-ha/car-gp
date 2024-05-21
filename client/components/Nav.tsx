@@ -47,13 +47,8 @@ function Nav() {
             </Link>
           </li>
           <li>
-            <Link to="/items" className="navbar-link">
+            <Link to="/consumables" className="navbar-link">
               Consumables
-            </Link>
-          </li>
-          <li>
-            <Link to="/map" className="navbar-link">
-              Service Center near me
             </Link>
           </li>
         </ul>
