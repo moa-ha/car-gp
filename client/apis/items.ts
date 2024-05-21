@@ -27,8 +27,10 @@ export async function deleteItem(id: number) {
   return await request.delete(url)
 }
 
-export async function editMileage(id: number, data: ItemData) {
+//needs function review
+
+export async function editMileage(item: Item) {
+  const id = item.id
   const url = rootUrl + `/${id}`
-  const input = { id, ...data }
-  return await request.patch(url).send(input)
+  return await request.patch(url).send(item)
 }
