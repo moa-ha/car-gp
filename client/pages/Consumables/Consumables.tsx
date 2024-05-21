@@ -4,6 +4,8 @@ import Delete from '../../components/Consumables/Delete'
 
 function Consumables() {
   const { data } = useConsumables()
+  console.log(data)
+
   return (
     <>
       <div className="app">
