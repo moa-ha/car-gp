@@ -2,15 +2,15 @@ import { Router } from 'express'
 import checkJwt, { JwtRequest } from '../auth0.ts'
 import { StatusCodes } from 'http-status-codes'
 
-import * as db from '../db/items.ts'
+import * as db from '../db/consumables.ts'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const items = await db.getItems()
+    const consumables = await db.getConsumables()
 
-    res.json({ items: items.map((item) => item.name) })
+    res.json({ consumables: consumables.map((consumable) => consumable.name) })
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })
@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const item = await db.getItemById(req.params.id)
-    res.json(item)
+    const Consumable = await db.getConsumableById(req.params.id)
+    res.json(Consumable)
   } catch (err) {
     next(err)
   }
@@ -35,7 +35,7 @@ router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
 
   try {
     const { name, replaced, due, km } = req.body
-    const id = await db.addItem({ name, replaced, due, km })
+    const id = await db.addConsumable({ name, replaced, due, km })
     res
       .setHeader('Location', `${req.baseUrl}/${id}`)
       .sendStatus(StatusCodes.CREATED)

@@ -4,7 +4,7 @@
  */
 
 export async function up(knex) {
-  return knex.schema.createTable('items', (table) => {
+  return knex.schema.createTable('consumables', (table) => {
     table.increments('id').primary()
     table.string('name')
     table.date('replaced')
@@ -19,5 +19,5 @@ export async function up(knex) {
  */
 
 export async function down(knex) {
-  return knex.schema.dropTable('items')
+  return knex.schema.dropTable('consumables')
 }

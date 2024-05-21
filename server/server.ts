@@ -1,7 +1,7 @@
 import express from 'express'
 import * as Path from 'node:path'
 
-import consumables from './routes/items.ts'
+import consumables from './routes/consumables.ts'
 
 const server = express()
 

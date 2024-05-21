@@ -1,9 +1,9 @@
 export async function seed(knex) {
   // Deletes ALL existing entries
-  await knex('items').del()
+  await knex('consumables').del()
 
   // Inserts seed entries
-  await knex('items').insert([
+  await knex('consumables').insert([
     {
       id: 1,
       name: 'Engine Oil',

@@ -1,7 +1,7 @@
-import { useDeleteItem } from '../../hooks/useItems'
+import { useDeleteConsumable } from '../../hooks/useConsumables'
 
-function DeleteItem({ id }: { id: number }) {
-  const mutation = useDeleteItem()
+function Delete({ id }: { id: number }) {
+  const mutation = useDeleteConsumable()
   const handleDelete = (e: any) => {
     mutation.mutate(e.target.id)
   }
@@ -18,4 +18,4 @@ function DeleteItem({ id }: { id: number }) {
   )
 }
 
-export default DeleteItem
+export default Delete
