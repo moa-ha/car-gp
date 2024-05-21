@@ -1,5 +1,33 @@
+import { useState } from 'react'
+
 function SearchBar() {
-  return <>SearchBar</>
+  const [searchQuery, setSearchQuery] = useState('')
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(e.target.value)
+  }
+
+  // Show google search result
+  const searchOnGoogle = () => {
+    const encodedQuery = encodeURIComponent(searchQuery)
+    const googleSearchUrl = `https://www.google.com/search?q=${encodedQuery}`
+    window.open(googleSearchUrl, '_blank')
+    setSearchQuery('')
+  }
+
+  return (
+    <>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={searchQuery}
+        name="name"
+        placeholder="Find out how many miles you can drive with this!"
+      />
+      <button className="button" onClick={searchOnGoogle}>
+        Go to Google result
+      </button>
+    </>
+  )
 }
 
 export default SearchBar
