@@ -21,7 +21,7 @@ function SearchBar() {
         type="text"
         value={searchQuery}
         name="name"
-        placeholder="Find out how many miles you can drive with this!"
+        placeholder="Find out how many kms you can drive with this!"
       />
       <button className="button" onClick={searchOnGoogle}>
         Go to Google result
