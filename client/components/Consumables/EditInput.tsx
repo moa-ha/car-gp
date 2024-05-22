@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
-import { useEditKm } from '../../hooks/useConsumables'
+import { useEdit } from '../../hooks/useConsumables'
 import { Consumable } from '../../../models/consumable'
 
 function EditInput({ data }: { data: Consumable }) {
-  const mutation = useEditKm()
+  const mutation = useEdit()
   const navigate = useNavigate()
 
   const [formState, setFormState] = useState({
@@ -25,7 +25,6 @@ function EditInput({ data }: { data: Consumable }) {
     mutation.mutate(formState)
     navigate('/consumables')
   }
-  console.log(data)
 
   return (
     <>

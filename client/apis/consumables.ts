@@ -27,7 +27,7 @@ export async function deleteConsumable(id: number) {
 
 //needs function review
 
-export async function editKm(Consumable: Consumable) {
+export async function edit(Consumable: Consumable) {
   const id = Consumable.id
   const url = `${rootUrl}/${id}`
   return await request.patch(url).send(Consumable)
