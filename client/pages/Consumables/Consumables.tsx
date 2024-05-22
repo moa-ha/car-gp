@@ -20,7 +20,7 @@ function Consumables() {
             {data &&
               data.map((consumable) => (
                 <li key={consumable.id}>
-                  <Link to={`${consumable.id}`}>
+                  <Link to={`/consumables/${consumable.id}`}>
                     <button className="button right">Edit</button>
                   </Link>
                   <Delete id={consumable.id} />

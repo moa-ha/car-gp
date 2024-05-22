@@ -1,10 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
 import { useEditKm, useGetConsumableById } from '../../hooks/useConsumables'
 
-function Edit() {
-  const id = Number(useParams().id)
-
+function EditInput({ id }: { id: number }) {
   const mutation = useEditKm()
   const navigate = useNavigate()
 
@@ -72,4 +70,4 @@ function Edit() {
     )
   }
 }
-export default Edit
+export default EditInput
