@@ -9,8 +9,6 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const consumables = await db.getConsumables()
-
-    // res.json({ consumables: consumables.map((consumable) => consumable.name) })
     res.json(consumables)
   } catch (error) {
     console.log(error)
