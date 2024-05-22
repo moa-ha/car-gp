@@ -18,10 +18,13 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const Consumable = await db.getConsumableById(req.params.id)
-    res.json(Consumable)
+    const id = Number(req.params.id)
+    const consumable = await db.getConsumableById(id)
+    return res.json(consumable)
   } catch (err) {
     next(err)
+    console.log(err)
+    res.status(500).json({ message: 'Something went wrong' })
   }
 })
 

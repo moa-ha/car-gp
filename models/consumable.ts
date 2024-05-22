@@ -2,7 +2,7 @@ export interface ConsumableData {
   name: string
   replaced: string
   due: string
-  km: 10000
+  km: number
 }
 
 export interface Consumable extends ConsumableData {

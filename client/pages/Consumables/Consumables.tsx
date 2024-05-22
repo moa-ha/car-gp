@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useConsumables } from '../../hooks/useConsumables'
 import Delete from '../../components/Consumables/Delete'
+import DateInput from '../../components/Consumables/DateInput'
 
 function Consumables() {
   const { data } = useConsumables()
@@ -26,7 +27,7 @@ function Consumables() {
                   <Delete id={consumable.id} />
                   <br></br>
                   {consumable.name}
-                  {/* <DateInputForm id={consumable.id} /> */}
+                  <DateInput id={consumable.id} />
                 </li>
               ))}
           </ul>

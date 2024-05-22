@@ -6,9 +6,8 @@ export async function getConsumables() {
   return consumables as Consumable[]
 }
 
-export async function getConsumableById(id: number | string) {
-  const consumables = await db('consumables').first().where({ id })
-  return consumables as Consumable
+export async function getConsumableById(id: number) {
+  return await db('consumables').where({ id }).first()
 }
 
 export async function addConsumable(data: ConsumableData) {

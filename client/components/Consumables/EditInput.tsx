@@ -1,27 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
-import { useEditKm, useGetConsumableById } from '../../hooks/useConsumables'
+import { useEditKm } from '../../hooks/useConsumables'
+import { Consumable } from '../../../models/consumable'
 
-function EditInput({ id }: { id: number }) {
+function EditInput({ data }: { data: Consumable }) {
   const mutation = useEditKm()
   const navigate = useNavigate()
 
-  const { data, isLoading, isError, error } = useGetConsumableById(id)
-
   const [formState, setFormState] = useState({
-    id: id,
+    id: data.id,
     name: data.name,
-    replaced: '',
-    due: '',
+    replaced: data.replaced,
+    due: data.due,
     km: data.km,
   })
-
-  if (isLoading) {
-    return <p>Loading...</p>
-  }
-  if (isError) {
-    return <p>Error: {error?.message}</p>
-  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
@@ -33,11 +25,12 @@ function EditInput({ id }: { id: number }) {
     mutation.mutate(formState)
     navigate('/consumables')
   }
+  console.log(data)
 
-  if (data) {
-    return (
-      <>
-        <form onSubmit={handleSubmit}>
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div>
           You can call it whatever you want.
           <input
             onChange={handleChange}
@@ -46,14 +39,18 @@ function EditInput({ id }: { id: number }) {
             name="name"
             placeholder={data.name}
           />
+        </div>
+        <div>
           When was it replaced?
           <input
             onChange={handleChange}
-            type="text"
+            type="date"
             value={formState.replaced}
             name="replaced"
             placeholder={data.replaced}
           />
+        </div>
+        <div>
           You can normally drive {data.km}km but we know it depends cars! How
           far can you drive with this item?
           <input
@@ -61,13 +58,14 @@ function EditInput({ id }: { id: number }) {
             type="number"
             value={formState.km}
             name="km"
-            placeholder={data.km || 0}
+            placeholder={String(data.km) || '0'}
           />
           km
-          <button type="submit">save</button>
-        </form>
-      </>
-    )
-  }
+        </div>
+
+        <button type="submit">save</button>
+      </form>
+    </>
+  )
 }
 export default EditInput

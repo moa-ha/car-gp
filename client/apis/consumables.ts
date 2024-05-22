@@ -5,17 +5,15 @@ import { Consumable, ConsumableData } from '../../models/consumable'
 
 const rootUrl = '/api/v1/consumables'
 
-export function getConsumables(): Promise<Consumable[]> {
-  return request.get(rootUrl).then((res) => {
+export async function getConsumables(): Promise<Consumable[]> {
+  return await request.get(rootUrl).then((res) => {
     return res.body
   })
 }
 
-export function getConsumableById(id: number) {
-  const url = `${rootUrl}/${id}`
-  return request.get(url).then((res) => {
-    return res.body
-  })
+export async function getConsumableById(id: number) {
+  const res = await request.get(`${rootUrl}/${id}`)
+  return res.body as Consumable
 }
 
 export async function addConsumable(Consumable: ConsumableData) {

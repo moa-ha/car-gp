@@ -16,24 +16,24 @@ export function useConsumables() {
 
 export function useGetConsumableById(id: number) {
   return useQuery({
-    queryKey: ['consumable', id],
+    queryKey: ['consumable'],
     queryFn: () => api.getConsumableById(id),
   })
 }
+
 export function useAddConsumable() {
   const client = useQueryClient()
-
   return useMutation({
     mutationFn: (consumable: ConsumableData) => api.addConsumable(consumable),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['newConsumable'] }),
   })
 }
+
 export function useDeleteConsumable() {
   const client = useQueryClient()
-
   return useMutation({
     mutationFn: (id: number) => api.deleteConsumable(id),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['delConsumable'] }),
   })
 }
 
@@ -43,6 +43,6 @@ export function useEditKm() {
 
   return useMutation({
     mutationFn: (Consumable: Consumable) => api.editKm(Consumable),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['editConsumable'] }),
   })
 }
