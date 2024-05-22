@@ -1,7 +1,7 @@
 export interface ConsumableData {
   name: string
   replaced: string
-  due: ''
+  due: string
   km: 10000
 }
 

@@ -35,7 +35,7 @@ function DateInput({ id }: Props) {
     if (data) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == id) {
-          km = Number(data[i].atMileage)
+          km = Number(data[i].km)
           return Math.floor(Number((km / average) * days))
         }
       }

@@ -38,11 +38,11 @@ export function useDeleteConsumable() {
 }
 
 //needs function review
-export function useEditMileage() {
+export function useEditKm() {
   const client = useQueryClient()
 
   return useMutation({
-    mutationFn: (Consumable: Consumable) => api.editMileage(Consumable),
+    mutationFn: (Consumable: Consumable) => api.editKm(Consumable),
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
   })
 }
