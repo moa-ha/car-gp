@@ -17,7 +17,7 @@ function Consumables() {
         </Link>
       </div>
       <div>
-        <ul className="flex w-full">
+        <ul className="flex w-full flex-wrap  gap-4">
           {data &&
             data.map((consumable) => (
               <li key={consumable.id}>
