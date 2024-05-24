@@ -27,13 +27,13 @@ function Nav() {
       <nav className="navbar">
         <p className="sign-in">
           <IfAuthenticated>
-            <button className="button" onClick={handleSignOut}>
+            <button className="btn-logo-blue" onClick={handleSignOut}>
               Sign out
             </button>
             {user && <p>Signed in as: {user.nickname && user.nickname.name}</p>}
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <button className="button" onClick={handleSignIn}>
+            <button className="btn-logo-blue" onClick={handleSignIn}>
               Sign in
             </button>
           </IfNotAuthenticated>

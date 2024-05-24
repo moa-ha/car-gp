@@ -61,7 +61,7 @@ function DateInput({ id }: Props) {
           id="datePicker"
           value={date}
         />
-        <button className="button">save</button>
+        <button className="btn-logo-blue">save</button>
         <p>
           check it on
           <span className="returned-date"> {result}</span>❕

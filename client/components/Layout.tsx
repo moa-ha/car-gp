@@ -3,7 +3,7 @@ import Nav from './Nav'
 
 export default function Layout() {
   return (
-    <>
+    <div className="app">
       <header>
         <h1>GP for your Car</h1>
       </header>
@@ -12,6 +12,6 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer></footer>
-    </>
+    </div>
   )
 }

@@ -10,31 +10,29 @@ function Consumables() {
 
   return (
     <>
-      <div className="app">
-        <h2>
-          Consumable Items
-          <Link to="/consumables/add">
-            <button className="button right">Add your item</button>
-          </Link>
-        </h2>
-        <div className="container">
-          <ul>
-            {data &&
-              data.map((consumable) => (
-                <li key={consumable.id}>
-                  <Card>
-                    <Link to={`/consumables/${consumable.id}`}>
-                      <button className="button right">Edit</button>
-                    </Link>
-                    <Delete id={consumable.id} />
-                    <br></br>
-                    {consumable.name}
-                    <DateInput id={consumable.id} />
-                  </Card>
-                </li>
-              ))}
-          </ul>
-        </div>
+      <h2>Consumable Items</h2>
+      <div>
+        <Link to="/consumables/add">
+          <button className="btn-logo-blue">Add your item</button>
+        </Link>
+      </div>
+      <div>
+        <ul className="flex w-full">
+          {data &&
+            data.map((consumable) => (
+              <li key={consumable.id}>
+                <Card>
+                  <Link to={`/consumables/${consumable.id}`}>
+                    <button className="btn-logo-blue">Edit</button>
+                  </Link>
+                  <Delete id={consumable.id} />
+                  <br></br>
+                  {consumable.name}
+                  <DateInput id={consumable.id} />
+                </Card>
+              </li>
+            ))}
+        </ul>
       </div>
     </>
   )
