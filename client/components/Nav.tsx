@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
-import logo from '../styles/car-gp-logo.png'
+import logo from '../styles/car-gp-logo-circle.png'
 
 import { Link } from 'react-router-dom'
 
@@ -25,13 +25,12 @@ function Nav() {
   }
   return (
     <>
-      <nav className="bg-gray-800 p-4 text-white shadow-lg">
+      <nav className="bg-logo-blue p-2 text-white shadow-lg">
         <div className="container flex justify-between">
-          <div className="flex items-end space-x-4 text-2xl font-black">
+          <div className="items-end space-x-4 text-lg">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-32 w-32 rounded-3xl" />
+              <img src={logo} alt="Logo" className="h-32 w-32" />
             </Link>
-
             <Link to="/" className="hover:text-gray-300">
               Inspection
             </Link>
@@ -48,7 +47,7 @@ function Nav() {
               {user && (
                 <p className="text-sm">
                   Signed in as:
-                  <span className="font-semibold">{user.nickname}</span>
+                  {/* <span className="font-semibold">{user.nickname}</span> */}
                 </p>
               )}
             </IfAuthenticated>
