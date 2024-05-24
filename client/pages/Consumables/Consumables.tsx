@@ -9,8 +9,7 @@ function Consumables() {
   console.log(data)
 
   return (
-    <>
-      <h2>Consumable Items</h2>
+    <div className="p-4">
       <div>
         <Link to="/consumables/add">
           <button className="btn-logo-blue">Add your item</button>
@@ -34,7 +33,7 @@ function Consumables() {
             ))}
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 
