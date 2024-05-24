@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useConsumables } from '../../hooks/useConsumables'
 import Delete from '../../components/Consumables/Delete'
 import DateInput from '../../components/Consumables/DateInput'
+import Card from '../../components/Card'
 
 function Consumables() {
   const { data } = useConsumables()
@@ -21,13 +22,15 @@ function Consumables() {
             {data &&
               data.map((consumable) => (
                 <li key={consumable.id}>
-                  <Link to={`/consumables/${consumable.id}`}>
-                    <button className="button right">Edit</button>
-                  </Link>
-                  <Delete id={consumable.id} />
-                  <br></br>
-                  {consumable.name}
-                  <DateInput id={consumable.id} />
+                  <Card>
+                    <Link to={`/consumables/${consumable.id}`}>
+                      <button className="button right">Edit</button>
+                    </Link>
+                    <Delete id={consumable.id} />
+                    <br></br>
+                    {consumable.name}
+                    <DateInput id={consumable.id} />
+                  </Card>
                 </li>
               ))}
           </ul>
