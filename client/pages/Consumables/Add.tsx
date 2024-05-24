@@ -26,37 +26,44 @@ function Add() {
     e.preventDefault()
     console.log(formState)
     mutation.mutate(formState)
-    navigate('/items')
+    navigate('/consumables')
   }
   return (
     <>
+      <button className="btn-logo-blue">Save</button>
       <form onSubmit={handleSubmit}>
-        Which item do you want to get notice for?
-        <input
-          onChange={handleChange}
-          type="text"
-          value={formState.name}
-          id=""
-          name="name"
-        />
-        <br></br>
-        How many miles can you drive with this?
-        <input
-          onChange={handleChange}
-          type="number"
-          value={formState.km}
-          id=""
-          name="atMileage"
-        />
-        <br></br>
-        <span>
-          Search if you don't know
-          <SearchBar />
-        </span>
-        <br></br>
-        <button className="button">Add Item</button>
+        <div className="p-4">
+          Which item do you want to get notice for?<br></br>
+          <input
+            onChange={handleChange}
+            type="text"
+            value={formState.name}
+            name="name"
+          />
+        </div>
+        <div className="p-4">
+          When was it replaced?<br></br>
+          <input
+            onChange={handleChange}
+            type="date"
+            value={formState.replaced}
+            name="name"
+          />
+        </div>
+        <div className="p-4">
+          How many miles can you drive with this?<br></br>
+          <input
+            onChange={handleChange}
+            type="number"
+            value={formState.km}
+            name="atMileage"
+          />
+        </div>
       </form>
-      <br></br>
+      <div className=" p-4">
+        Search if you don't know
+        <SearchBar />
+      </div>
     </>
   )
 }
