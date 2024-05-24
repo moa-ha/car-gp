@@ -17,7 +17,7 @@ function Consumables() {
         </Link>
       </div>
       <div>
-        <ul className="flex w-full flex-wrap  gap-4">
+        <ul className="flex w-full flex-wrap gap-4">
           {data &&
             data.map((consumable) => (
               <li key={consumable.id}>
@@ -27,7 +27,7 @@ function Consumables() {
                   </Link>
                   <Delete id={consumable.id} />
                   <br></br>
-                  {consumable.name}
+                  <span className="text-2xl">{consumable.name}</span>
                   <DateInput id={consumable.id} />
                 </Card>
               </li>

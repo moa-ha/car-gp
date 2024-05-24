@@ -22,6 +22,7 @@ export default {
           border: '1px solid white',
           color: '#ffffff',
           padding: '.5rem 1rem',
+          margin: '0 .2em',
           borderRadius: '.5rem',
           '&:hover': {
             backgroundColor: '#000a15',

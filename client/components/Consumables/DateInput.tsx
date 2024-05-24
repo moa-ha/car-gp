@@ -52,9 +52,9 @@ function DateInput({ id }: Props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="datePicker"> Select a date: </label>
+        <label htmlFor="datePicker"> Select a date it's replaced: </label>
         <input
-          className="input-field"
+          className="text-black"
           onChange={handleChange}
           type="date"
           name="date"
