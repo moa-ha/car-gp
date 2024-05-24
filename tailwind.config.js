@@ -8,6 +8,7 @@ export default {
       },
     },
   },
+
   variants: {
     extend: {
       backgroundColor: ['hover'],
@@ -31,4 +32,13 @@ export default {
       })
     },
   ],
+  extend: {
+    form: {
+      'm-2': 'm-2',
+      rounded: 'rounded',
+      border: 'border border-gray-300',
+      'px-4': 'px-4',
+      'py-2': 'py-2',
+    },
+  },
 }

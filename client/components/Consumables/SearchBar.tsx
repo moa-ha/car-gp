@@ -20,7 +20,7 @@ function SearchBar() {
         🔍
       </button>
       <input
-        className="w-full"
+        className="m-2 w-full rounded border border-gray-300 px-4 py-2"
         onChange={handleChange}
         type="text"
         value={searchQuery}
