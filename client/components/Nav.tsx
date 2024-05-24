@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
+import logo from '../styles/car-gp-logo-circle.png'
 
 import { Link } from 'react-router-dom'
 
@@ -24,34 +25,39 @@ function Nav() {
   }
   return (
     <>
-      <nav className="navbar">
-        <p className="sign-in">
-          <IfAuthenticated>
-            <button className="btn-logo-blue" onClick={handleSignOut}>
-              Sign out
-            </button>
-            {user && <p>Signed in as: {user.nickname && user.nickname.name}</p>}
-          </IfAuthenticated>
-          <IfNotAuthenticated>
-            <button className="btn-logo-blue" onClick={handleSignIn}>
-              Sign in
-            </button>
-          </IfNotAuthenticated>
-          <br></br>
-          Sign in to save your maintenance record
-        </p>
-        <ul className="navbar-list">
-          <li>
-            <Link to="/" className="navbar-link">
+      <nav className="bg-logo-blue p-2 text-white shadow-lg">
+        <div className="container flex justify-between">
+          <div className="items-end space-x-4 text-lg">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="h-32 w-32" />
+            </Link>
+            <Link to="/" className="hover:text-gray-300">
               Inspection
             </Link>
-          </li>
-          <li>
-            <Link to="/consumables" className="navbar-link">
+            <Link to="/consumables" className="hover:text-gray-300">
               Consumables
             </Link>
-          </li>
-        </ul>
+          </div>
+
+          <div>
+            <IfAuthenticated>
+              <button className="btn-logo-blue" onClick={handleSignOut}>
+                Sign out
+              </button>
+              {user && (
+                <p className="text-sm">
+                  Signed in as:
+                  {/* <span className="font-semibold">{user.nickname}</span> */}
+                </p>
+              )}
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              <button className="btn-logo-blue" onClick={handleSignIn}>
+                Sign in
+              </button>
+            </IfNotAuthenticated>
+          </div>
+        </div>
       </nav>
     </>
   )
