@@ -25,7 +25,7 @@ function Nav() {
   }
   return (
     <>
-      <nav className="bg-logo-blue p-2 text-white shadow-lg">
+      <nav className="p-2">
         <div className="container flex justify-between">
           <div className="items-end space-x-4 text-lg">
             <Link to="/">

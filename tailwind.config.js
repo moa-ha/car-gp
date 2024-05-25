@@ -6,6 +6,9 @@ export default {
       colors: {
         'logo-blue': '#001b2e',
       },
+      backgroundImage: {
+        'bg-img': "url('/client/styles/bg-1.jpeg')",
+      },
     },
   },
 

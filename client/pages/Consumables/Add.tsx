@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // users can add items their own
 
 import { FormEvent, useState } from 'react'

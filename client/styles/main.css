@@ -5,3 +5,16 @@
 .app {
   margin: 20px;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+.bg-bg-img {
+  background-image: url('/client/styles/bg-1.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensures the div covers at least the viewport height */
+}
