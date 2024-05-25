@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { useConsumables } from '../../hooks/useConsumables'
 import Delete from '../../components/Consumables/Delete'
 import DateInput from '../../components/Consumables/DateInput'
-import Card from '../../components/Card'
 
 function Consumables() {
   const { data } = useConsumables()
