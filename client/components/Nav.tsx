@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
-import logo from '../styles/car-gp-logo-circle.png'
+import logo from '../styles/images/logo-4.png'
 
 import { Link } from 'react-router-dom'
 
@@ -25,14 +25,24 @@ function Nav() {
   }
   return (
     <>
-      <nav className="p-2">
-        <div className="container flex justify-between">
-          <div className="items-end space-x-4 text-lg">
+      <nav className="p-4">
+        <div className="flex justify-between">
+          <div className="flex items-end space-x-4 text-2xl">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-32 w-32" />
+              <img src={logo} alt="Logo" className="w-40" />
             </Link>
-            <Link to="/">Inspection</Link>
-            <Link to="/consumables">Consumables</Link>
+            <Link
+              to="/maintenance"
+              className="smooth-transition text-shadow-md hover:text-shadow-lg"
+            >
+              Maintenance
+            </Link>
+            <Link
+              to="/consumables"
+              className="smooth-transition text-shadow-md hover:text-shadow-lg"
+            >
+              Consumables
+            </Link>
           </div>
 
           <div>

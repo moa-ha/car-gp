@@ -5,10 +5,12 @@ import Consumables from './pages/Consumables/Consumables.tsx'
 import Edit from './pages/Consumables/Edit.tsx'
 import Add from './pages/Consumables/Add.tsx'
 export default createRoutesFromElements(
-  <Route path="/" element={<Layout />}>
-    <Route index element={<Home />} />
-    <Route path="/consumables" element={<Consumables />} />
-    <Route path="/consumables/:id" element={<Edit />} />
-    <Route path="/consumables/add" element={<Add />} />
+  <Route>
+    <Route path="/" element={<Home />} />
+    <Route path="/" element={<Layout />}>
+      <Route path="/consumables" element={<Consumables />} />
+      <Route path="/consumables/:id" element={<Edit />} />
+      <Route path="/consumables/add" element={<Add />} />
+    </Route>
   </Route>,
 )
