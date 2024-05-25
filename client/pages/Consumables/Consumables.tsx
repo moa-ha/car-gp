@@ -19,16 +19,14 @@ function Consumables() {
         <ul className="flex w-full flex-wrap gap-4">
           {data &&
             data.map((consumable) => (
-              <li key={consumable.id}>
-                <Card>
-                  <Link to={`/consumables/${consumable.id}`}>
-                    <button className="btn-logo-blue">Edit</button>
-                  </Link>
-                  <Delete id={consumable.id} />
-                  <br></br>
-                  <span className="text-2xl">{consumable.name}</span>
-                  <DateInput id={consumable.id} />
-                </Card>
+              <li key={consumable.id} className="bg-opacity p-4">
+                <Link to={`/consumables/${consumable.id}`}>
+                  <button className="btn-logo-blue relative">Edit</button>
+                </Link>
+                <Delete id={consumable.id} />
+                <br></br>
+                <span className="relative text-2xl">{consumable.name}</span>
+                <DateInput id={consumable.id} />
               </li>
             ))}
         </ul>

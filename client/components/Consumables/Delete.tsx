@@ -10,7 +10,7 @@ function Delete({ id }: { id: number }) {
     <button
       id={String(id)}
       onClick={handleDelete}
-      className="btn-logo-blue justify-end"
+      className="btn-logo-blue relative justify-end"
       aria-label="delete button"
     >
       Delete

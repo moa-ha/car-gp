@@ -18,3 +18,34 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh; /* Ensures the div covers at least the viewport height */
 }
+
+/* styles.css */
+.bg-opacity {
+  position: relative;
+}
+
+.bg-opacity::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Adjust the background color and opacity */
+  z-index: 0; /* Ensures the background is behind the content */
+}
+
+.bg-opacity > li {
+  position: relative;
+  z-index: 1; /* Ensures the list items are above the background */
+}
+
+.bg-opacity > li > span {
+  position: relative;
+  z-index: 2; /* Ensures the text is above the list items */
+}

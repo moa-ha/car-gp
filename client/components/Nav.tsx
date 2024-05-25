@@ -31,12 +31,8 @@ function Nav() {
             <Link to="/">
               <img src={logo} alt="Logo" className="h-32 w-32" />
             </Link>
-            <Link to="/" className="hover:text-gray-300">
-              Inspection
-            </Link>
-            <Link to="/consumables" className="hover:text-gray-300">
-              Consumables
-            </Link>
+            <Link to="/">Inspection</Link>
+            <Link to="/consumables">Consumables</Link>
           </div>
 
           <div>
