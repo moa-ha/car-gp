@@ -27,7 +27,7 @@ function EditInput({ data }: { data: Consumable }) {
   }
 
   return (
-    <div className="bg-opacity p-4">
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="relative pt-4 text-xl underline">
           You can call it whatever you want.<br></br>

@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
-import logo from '../styles/car-gp-logo-circle.png'
+import logo from '../styles/logo-4.png'
 
 import { Link } from 'react-router-dom'
 
