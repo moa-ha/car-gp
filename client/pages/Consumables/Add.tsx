@@ -31,7 +31,7 @@ function Add() {
   }
   return (
     <>
-      <button className="btn-logo-blue">Save</button>
+      <button className="btn-clear">Save</button>
       <form onSubmit={handleSubmit}>
         <div className="p-4">
           Which item do you want to get notice for?<br></br>

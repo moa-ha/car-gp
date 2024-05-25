@@ -3,12 +3,12 @@ export default {
   content: ['./index.html', './client/**/*.tsx'],
   theme: {
     extend: {
-      colors: {
-        'logo-blue': '#001b2e',
-      },
-      backgroundImage: {
-        'bg-img': "url('/client/styles/bg-1.jpeg')",
-      },
+      // colors: {
+      //   'logo-blue': '#001b2e',
+      // },
+      // backgroundImage: {
+      //   'bg-img': "url('/client/styles/bg-1.jpeg')",
+      // },
     },
   },
 
@@ -21,15 +21,15 @@ export default {
     // buttons
     function ({ addComponents }) {
       addComponents({
-        '.btn-logo-blue': {
-          backgroundColor: '#001b2e',
-          border: '1px solid white',
-          color: '#ffffff',
-          padding: '.5rem 1rem',
+        '.btn-clear': {
+          border: '1px solid black',
+          color: '#000000',
+          padding: '0 .5rem',
           margin: '0 .2em',
-          borderRadius: '.5rem',
+          transition: 'all 0.3s ease', // smooth transition
           '&:hover': {
-            backgroundColor: '#000a15',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // add shadow on hover
+            transform: 'translateY(-2px)', // slight lift on hover
           },
         },
       })

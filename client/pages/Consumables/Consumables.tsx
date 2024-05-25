@@ -12,7 +12,7 @@ function Consumables() {
     <div className="p-4">
       <div>
         <Link to="/consumables/add">
-          <button className="btn-logo-blue">Add your item</button>
+          <button className="btn-clear">Add your item</button>
         </Link>
       </div>
       <div>
@@ -21,7 +21,7 @@ function Consumables() {
             data.map((consumable) => (
               <li key={consumable.id} className="bg-opacity p-4">
                 <Link to={`/consumables/${consumable.id}`}>
-                  <button className="btn-logo-blue relative">Edit</button>
+                  <button className="btn-clear relative">Edit</button>
                 </Link>
                 <Delete id={consumable.id} />
                 <br></br>

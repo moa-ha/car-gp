@@ -37,7 +37,7 @@ function Nav() {
 
           <div>
             <IfAuthenticated>
-              <button className="btn-logo-blue" onClick={handleSignOut}>
+              <button className="btn-clear" onClick={handleSignOut}>
                 Sign out
               </button>
               {user && (
@@ -48,7 +48,7 @@ function Nav() {
               )}
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <button className="btn-logo-blue" onClick={handleSignIn}>
+              <button className="btn-clear" onClick={handleSignIn}>
                 Sign in
               </button>
             </IfNotAuthenticated>

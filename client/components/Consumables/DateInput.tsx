@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // stretch: notice or alarm
 // make it available to get user's average mileage per year and calculate accordingly
 
@@ -62,7 +63,7 @@ function DateInput({ id }: Props) {
           id="datePicker"
           value={date}
         />
-        <button className="btn-logo-blue">save</button>
+        <button className="btn-clear">save</button>
         <p>
           check it on
           <span className="returned-date"> {result}</span>❕
