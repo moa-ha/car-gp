@@ -8,8 +8,8 @@ function Home() {
   return (
     <div className="bg-bg-img h-full p-10">
       <div className="mb-20 flex flex-col items-center">
-        <img src={logo} alt="home-logo" className="h-64 w-64" />
-        <img src={name} alt="home-logo" className="w-80" />
+        <img src={logo} alt="home-logo" className="w-64" />
+        <img src={name} alt="home-logo-text" className="w-80" />
       </div>
       <div>
         <ul className="flex justify-center gap-4">

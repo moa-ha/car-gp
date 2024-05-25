@@ -25,14 +25,14 @@ function Nav() {
   }
   return (
     <>
-      <nav className="p-2">
+      <nav className="p-4">
         <div className="flex justify-between">
-          <div className="items-end space-x-4 text-2xl">
+          <div className="flex items-end space-x-4 text-2xl">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-32 w-32" />
+              <img src={logo} alt="Logo" className="w-40" />
             </Link>
             <Link
-              to="/"
+              to="/maintenance"
               className="smooth-transition text-shadow-md hover:text-shadow-lg"
             >
               Maintenance
