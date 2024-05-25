@@ -34,14 +34,34 @@ export default {
         },
       })
     },
-  ],
-  extend: {
-    form: {
-      'm-2': 'm-2',
-      rounded: 'rounded',
-      border: 'border border-gray-300',
-      'px-4': 'px-4',
-      'py-2': 'py-2',
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '2px 2px 4px rgba(255, 255, 255, 0.2)',
+        },
+        '.text-shadow-md': {
+          textShadow: '3px 3px 6px rgba(255, 255, 255, 0.3)',
+        },
+        '.text-shadow-lg': {
+          textShadow: '4px 4px 8px rgba(255, 255, 255, 0.4)',
+        },
+        '.text-shadow-xl': {
+          textShadow: '5px 5px 10px rgba(255, 255, 255, 0.5)',
+        },
+        '.text-shadow-none': {
+          textShadow: 'none',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
     },
-  },
+  ],
+  // extend: {
+  //   form: {
+  //     'm-2': 'm-2',
+  //     rounded: 'rounded',
+  //     border: 'border border-gray-300',
+  //     'px-4': 'px-4',
+  //     'py-2': 'py-2',
+  //   },
+  // },
 }

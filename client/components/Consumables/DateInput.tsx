@@ -56,7 +56,7 @@ function DateInput({ id }: Props) {
         <label htmlFor="datePicker"> Select a date it's replaced: </label>
         <br></br>
         <input
-          className="text-black "
+          className="text-black"
           onChange={handleChange}
           type="date"
           name="date"

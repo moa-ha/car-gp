@@ -26,13 +26,23 @@ function Nav() {
   return (
     <>
       <nav className="p-2">
-        <div className="container flex justify-between">
-          <div className="items-end space-x-4 text-lg">
+        <div className="flex justify-between">
+          <div className="items-end space-x-4 text-2xl">
             <Link to="/">
               <img src={logo} alt="Logo" className="h-32 w-32" />
             </Link>
-            <Link to="/">Inspection</Link>
-            <Link to="/consumables">Consumables</Link>
+            <Link
+              to="/"
+              className="smooth-transition text-shadow-md hover:text-shadow-lg"
+            >
+              Maintenance
+            </Link>
+            <Link
+              to="/consumables"
+              className="smooth-transition text-shadow-md hover:text-shadow-lg"
+            >
+              Consumables
+            </Link>
           </div>
 
           <div>
