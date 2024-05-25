@@ -1,6 +1,6 @@
 import name from '../styles/images/logo-5.png'
 import logo from '../styles/images/logo-4.png'
-import maintenance from '../styles/images/Maintenance.png'
+import maintenance from '../styles/images/maintenance.png'
 import consumables from '../styles/images/consumables.png'
 import { Link } from 'react-router-dom'
 
