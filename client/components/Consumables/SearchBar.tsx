@@ -15,18 +15,19 @@ function SearchBar() {
   }
 
   return (
-    <>
+    <div className="flex items-center space-x-4">
+      <button onClick={searchOnGoogle} className="font-light">
+        🔍
+      </button>
       <input
+        className="m-2 w-full rounded border border-gray-300 px-4 py-2"
         onChange={handleChange}
         type="text"
         value={searchQuery}
         name="name"
-        placeholder="Find out how many kms you can drive with this!"
+        placeholder="ex. How many kms to drive after changing battery?"
       />
-      <button className="btn-logo-blue" onClick={searchOnGoogle}>
-        Go to Google result
-      </button>
-    </>
+    </div>
   )
 }
 

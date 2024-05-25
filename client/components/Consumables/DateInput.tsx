@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // stretch: notice or alarm
 // make it available to get user's average mileage per year and calculate accordingly
 
@@ -50,24 +51,25 @@ function DateInput({ id }: Props) {
   const formattedDate = returnedDate.toLocaleDateString('en-GB')
 
   return (
-    <>
+    <div className="relative">
       <form onSubmit={handleSubmit}>
         <label htmlFor="datePicker"> Select a date it's replaced: </label>
+        <br></br>
         <input
-          className="text-black"
+          className="text-black "
           onChange={handleChange}
           type="date"
           name="date"
           id="datePicker"
           value={date}
         />
-        <button className="btn-logo-blue">save</button>
+        <button className="btn-clear">save</button>
         <p>
           check it on
           <span className="returned-date"> {result}</span>❕
         </p>
       </form>
-    </>
+    </div>
   )
 }
 

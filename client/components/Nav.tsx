@@ -25,23 +25,19 @@ function Nav() {
   }
   return (
     <>
-      <nav className="bg-logo-blue p-2 text-white shadow-lg">
+      <nav className="p-2">
         <div className="container flex justify-between">
           <div className="items-end space-x-4 text-lg">
             <Link to="/">
               <img src={logo} alt="Logo" className="h-32 w-32" />
             </Link>
-            <Link to="/" className="hover:text-gray-300">
-              Inspection
-            </Link>
-            <Link to="/consumables" className="hover:text-gray-300">
-              Consumables
-            </Link>
+            <Link to="/">Inspection</Link>
+            <Link to="/consumables">Consumables</Link>
           </div>
 
           <div>
             <IfAuthenticated>
-              <button className="btn-logo-blue" onClick={handleSignOut}>
+              <button className="btn-clear" onClick={handleSignOut}>
                 Sign out
               </button>
               {user && (
@@ -52,7 +48,7 @@ function Nav() {
               )}
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <button className="btn-logo-blue" onClick={handleSignIn}>
+              <button className="btn-clear" onClick={handleSignIn}>
                 Sign in
               </button>
             </IfNotAuthenticated>
