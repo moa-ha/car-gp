@@ -1,3 +1,5 @@
+import WofSchedule from '../../components/Maintenance/WofSchedule'
+
 function Maintenance() {
   return (
     <div className="flex flex-col gap-4 p-4">
@@ -9,6 +11,7 @@ function Maintenance() {
         </span>
         Enter when your latest Wof was done and get notification for your next
         scheduled Wof!
+        <WofSchedule />
       </div>
       <div className="bg-opacity p-4">
         <div className="relative text-2xl ">Rego</div>

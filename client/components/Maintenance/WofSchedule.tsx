@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import CarYear from './CarYear'
 
 function WofSchedule() {
   const [date, setDate] = useState('')
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {}
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setDate(e.target.value)
+  }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setDate(e.currentTarget)
   }
 
   return (
@@ -13,6 +15,8 @@ function WofSchedule() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="datePicker"> Your latest Wof was </label>
         <br></br>
+        Check if your car was registered before 1 January 2000.
+        <CarYear />
         <input
           className="text-black"
           onChange={handleChange}
@@ -23,8 +27,8 @@ function WofSchedule() {
         />
         <button className="btn-clear">save</button>
         <p>
-          check it on
-          <span className="returned-date"> {result}</span>❕
+          Due:
+          {/* <span className="returned-date"> {result}</span>❕ */}
         </p>
       </form>
     </div>
