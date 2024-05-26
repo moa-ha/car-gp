@@ -3,11 +3,14 @@ import CarYear from './CarYear'
 
 function WofSchedule() {
   const [date, setDate] = useState('')
+  let result
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setDate(e.target.value)
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    result = date + 365
   }
 
   return (
@@ -28,7 +31,7 @@ function WofSchedule() {
         <button className="btn-clear">save</button>
         <p>
           Due:
-          {/* <span className="returned-date"> {result}</span>❕ */}
+          <span className="returned-date"> {result}</span>❕
         </p>
       </form>
     </div>

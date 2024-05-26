@@ -2,12 +2,14 @@ import express from 'express'
 import * as Path from 'node:path'
 
 import consumables from './routes/consumables.ts'
+import maintenance from './routes/maintenance.ts'
 
 const server = express()
 
 server.use(express.json())
 
 server.use('/api/v1/consumables', consumables)
+server.use('/api/v1/maintenance', maintenance)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
