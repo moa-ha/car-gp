@@ -5,7 +5,7 @@ function CarYear() {
   const [isShow, setIsShow] = useState(false)
 
   function handleClick() {
-    setIsShow(true)
+    setIsShow(!isShow)
   }
 
   return (
