@@ -6,21 +6,17 @@ import { Link } from 'react-router-dom'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
-  const auth = useAuth0()
+  const { user, logout, loginWithRedirect } = useAuth0()
   // TODO: replace placeholder user object with the one from auth0
-  const user = {
-    nickname: auth.user,
-  }
   console.log(user)
 
   const handleSignOut = () => {
     console.log('sign out')
-    return auth.logout()
+    return logout()
   }
 
   const handleSignIn = () => {
     console.log('sign in')
-    const { loginWithRedirect } = auth
     return loginWithRedirect()
   }
   return (
@@ -53,7 +49,7 @@ function Nav() {
               {user && (
                 <p className="text-sm">
                   Signed in as:
-                  {/* <span className="font-semibold">{user.nickname}</span> */}
+                  <span className="font-semibold">{user.nickname}</span>
                 </p>
               )}
             </IfAuthenticated>
