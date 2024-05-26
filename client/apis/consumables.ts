@@ -17,7 +17,7 @@ export async function getConsumableById(id: number) {
 }
 
 export async function addConsumable(Consumable: ConsumableData) {
-  return await request.patch(rootUrl).send(Consumable)
+  return await request.post(rootUrl).send(Consumable)
 }
 
 export async function deleteConsumable(id: number) {
