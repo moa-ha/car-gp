@@ -29,21 +29,40 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //needs function review
-router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
-  if (!req.auth?.sub) {
-    res.sendStatus(StatusCodes.UNAUTHORIZED)
-    return
-  }
+// router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
+//   if (!req.auth?.sub) {
+//     res.sendStatus(StatusCodes.UNAUTHORIZED)
+//     return
+//   }
 
+//   try {
+//     const { name, replaced, due, km } = req.body
+//     const id = await db.addConsumable({ name, replaced, due, km })
+//     res
+//       .setHeader('Location', `${req.baseUrl}/${id}`)
+//       .sendStatus(StatusCodes.CREATED)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
+router.post('/', async (req, res) => {
+  const data = req.body
   try {
-    const { name, replaced, due, km } = req.body
-    const id = await db.addConsumable({ name, replaced, due, km })
-    res
-      .setHeader('Location', `${req.baseUrl}/${id}`)
-      .sendStatus(StatusCodes.CREATED)
-  } catch (err) {
-    next(err)
+    await db.addConsumable(data)
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({ message: 'Something went wrong adding item' })
   }
 })
 
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    await db.deleteConsumable(id)
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({ message: 'It is not deleted. Try again' })
+  }
+})
 export default router

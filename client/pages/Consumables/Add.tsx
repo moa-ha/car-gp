@@ -17,6 +17,7 @@ function Add() {
   })
   const mutation = useAddConsumable()
 
+  // TODO: make the due calculation
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
     const info = { ...formState, [name]: value }
@@ -25,14 +26,13 @@ function Add() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log(formState)
     mutation.mutate(formState)
     navigate('/consumables')
   }
   return (
     <>
-      <button className="btn-clear">Save</button>
       <form onSubmit={handleSubmit}>
+        <button className="btn-clear">Save</button>
         <div className="p-4">
           Which item do you want to get notice for?<br></br>
           <input
@@ -50,7 +50,7 @@ function Add() {
             onChange={handleChange}
             type="date"
             value={formState.replaced}
-            name="name"
+            name="replaced"
           />
         </div>
         <div className="p-4">
@@ -60,7 +60,7 @@ function Add() {
             onChange={handleChange}
             type="number"
             value={formState.km}
-            name="atMileage"
+            name="km"
           />
         </div>
       </form>
