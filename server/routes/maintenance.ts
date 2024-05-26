@@ -12,7 +12,17 @@ router.get('/', async (req, res) => {
     res.json(maintenance)
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Something went wrong' })
+    res.status(500).json({ message: "Couldn't get maintenance data" })
+  }
+})
+
+router.patch('/', async (req, res) => {
+  const data = req.body
+  try {
+    await db.updateDue(data)
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({ message: "Couldn't update due dates" })
   }
 })
 
