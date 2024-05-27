@@ -46,23 +46,43 @@ router.get('/:id', async (req, res, next) => {
 //   }
 // })
 
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req, res, next) => {
   const data = req.body
   try {
     await db.addConsumable(data)
+    res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
   } catch (e) {
-    console.log(e)
     res.status(500).json({ message: 'Something went wrong adding item' })
+    next(e)
   }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
+  // LEAVE IT FOR REFERENCE FOR FUTURE
+  // if (!req.auth?.sub) {
+  //   res.sendStatus(StatusCodes.UNAUTHORIZED)
+  //   return
+  // }
+
+  // const auth0Id = req.auth ? req.auth.sub : undefined
+  // if (!id) {
+  //   console.error('Invalid id')
+  //   return res.status(400).send('Bad request')
+  // }
+
+  // if (!auth0Id) {
+  //   console.error('No auth0Id')
+  //   return res.status(401).send('Unauthorized')
+  // }
   const id = Number(req.params.id)
   try {
     await db.deleteConsumable(id)
-  } catch (e) {
-    console.log(e)
+    res
+      .setHeader('Location', `${req.baseUrl}/${id}`)
+      .sendStatus(StatusCodes.CREATED)
+  } catch (err) {
     res.status(500).json({ message: 'It is not deleted. Try again' })
+    next(err)
   }
 })
 export default router
