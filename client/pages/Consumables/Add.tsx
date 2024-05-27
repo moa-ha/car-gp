@@ -28,7 +28,7 @@ function Add() {
     e.preventDefault()
     mutation.mutate(formState)
     navigate('/consumables')
-    window.location.reload()
+    // window.location.reload()
   }
   return (
     <>

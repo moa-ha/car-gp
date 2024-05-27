@@ -6,7 +6,7 @@ import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
 const domain = 'https://harakeke-2024-moa.au.auth0.com'
-const audience = 'https://car-gp.api'
+const audience = 'https://car-gp/api'
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
