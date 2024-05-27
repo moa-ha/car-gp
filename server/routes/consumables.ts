@@ -56,12 +56,16 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
-  const id = Number(req.params.id)
+router.delete('/:id', async (req: JwtRequest, res, next) => {
+  // if (!req.auth?.sub) {
+  //   res.sendStatus(StatusCodes.UNAUTHORIZED)
+  //   return
+  // }
   try {
+    const id = Number(req.params.id)
     await db.deleteConsumable(id)
   } catch (e) {
-    console.log(e)
+    next(e)
     res.status(500).json({ message: 'It is not deleted. Try again' })
   }
 })
