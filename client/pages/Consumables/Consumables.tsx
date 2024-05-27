@@ -17,7 +17,7 @@ function Consumables() {
         <ul className="flex w-full flex-wrap gap-4">
           {data &&
             data.map((consumable) => (
-              <li key={consumable.id} className="bg-opacity p-4">
+              <li key={consumable.id} className="bg-opacity w-80 p-4">
                 <Link to={`/consumables/${consumable.id}`}>
                   <button className="btn-clear relative">Edit</button>
                 </Link>

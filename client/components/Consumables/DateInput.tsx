@@ -51,10 +51,9 @@ function DateInput({ id }: Props) {
   const formattedDate = returnedDate.toLocaleDateString('en-GB')
 
   return (
-    <div className="relative">
+    <div className="relative flex gap-4">
       <form onSubmit={handleSubmit}>
         <label htmlFor="datePicker"> Select a date it's replaced: </label>
-        <br></br>
         <input
           className="text-black"
           onChange={handleChange}
@@ -63,11 +62,9 @@ function DateInput({ id }: Props) {
           id="datePicker"
           value={date}
         />
-        <button className="btn-clear">save</button>
-        <p>
-          check it on
-          <span className="returned-date"> {result}</span>❕
-        </p>
+        <button className="btn-clear mt-2">Check the upcoming schedule!</button>
+        check it on
+        <span className="returned-date"> {result}</span>
       </form>
     </div>
   )

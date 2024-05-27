@@ -49,3 +49,7 @@ body {
   position: relative;
   z-index: 2; /* Ensures the text is above the list items */
 }
+
+.returned-date::after {
+  content: '❕';
+}
