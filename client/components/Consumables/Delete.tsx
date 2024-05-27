@@ -4,7 +4,6 @@ function Delete({ id }: { id: number }) {
   const mutation = useDeleteConsumable()
   const handleDelete = () => {
     mutation.mutate(id)
-    // window.location.reload()
   }
 
   return (

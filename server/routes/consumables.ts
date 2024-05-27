@@ -57,23 +57,23 @@ router.post('/', async (req, res) => {
 })
 
 router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
-  console.log('Auth:', req.auth)
-  if (!req.auth?.sub) {
-    res.sendStatus(StatusCodes.UNAUTHORIZED)
-    return
-  }
+  // LEAVE IT FOR REFERENCE FOR FUTURE
+  // if (!req.auth?.sub) {
+  //   res.sendStatus(StatusCodes.UNAUTHORIZED)
+  //   return
+  // }
+
+  // const auth0Id = req.auth ? req.auth.sub : undefined
+  // if (!id) {
+  //   console.error('Invalid id')
+  //   return res.status(400).send('Bad request')
+  // }
+
+  // if (!auth0Id) {
+  //   console.error('No auth0Id')
+  //   return res.status(401).send('Unauthorized')
+  // }
   const id = Number(req.params.id)
-  const auth0Id = req.auth ? req.auth.sub : undefined
-  if (!id) {
-    console.error('Invalid id')
-    return res.status(400).send('Bad request')
-  }
-
-  if (!auth0Id) {
-    console.error('No auth0Id')
-    return res.status(401).send('Unauthorized')
-  }
-
   try {
     await db.deleteConsumable(id)
     res

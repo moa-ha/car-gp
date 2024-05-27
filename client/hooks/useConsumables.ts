@@ -57,7 +57,6 @@ export function useDeleteConsumable() {
   return useMutation({
     mutationFn: async (id: number) => {
       const token = await getAccessTokenSilently()
-      console.log(token)
       return api.deleteConsumable({ id, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),

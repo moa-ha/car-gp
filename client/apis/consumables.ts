@@ -25,34 +25,35 @@ export async function addConsumable(Consumable: ConsumableData) {
 //   return await request.delete(url)
 // }
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+//L EAVE IT FOR FUTURE REFERENCE
+// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-function logError(err: Error) {
-  console.log(err)
-  if (err.message === 'Username Taken') {
-    throw new Error('Username already taken - please choose another')
-  } else if (err.message === 'Forbidden') {
-    throw new Error(
-      'Only the user who added the fruit may update and delete it',
-    )
-  } else {
-    console.error('Error consuming the API (in client/api.js):', err.message)
-    throw err
-  }
-}
+// function logError(err: Error) {
+//   console.log(err)
+//   if (err.message === 'Username Taken') {
+//     throw new Error('Username already taken - please choose another')
+//   } else if (err.message === 'Forbidden') {
+//     throw new Error(
+//       'Only the user who added the fruit may update and delete it',
+//     )
+//   } else {
+//     console.error('Error consuming the API (in client/api.js):', err.message)
+//     throw err
+//   }
+// }
 interface Token {
   id: number
   token: string
 }
 export async function deleteConsumable({ id, token }: Token): Promise<void> {
   const url = `${rootUrl}/${id}`
-  await sleep(1000)
+  // await sleep(1000)
 
-  return request
+  return await request
     .delete(url)
     .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
-    .catch(logError)
+  // .catch(logError)
 }
 
 //needs function review
