@@ -5,7 +5,6 @@ import DateInput from '../../components/Consumables/DateInput'
 
 function Consumables() {
   const { data } = useConsumables()
-  console.log(data)
 
   return (
     <div className="p-4">

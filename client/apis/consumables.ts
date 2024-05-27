@@ -49,6 +49,22 @@ export async function deleteConsumable({
   // .catch(logError)
 }
 
+interface EditConsumable {
+  data: Consumable
+  token: string
+}
+export async function editConsumable({
+  data,
+  token,
+}: EditConsumable): Promise<void> {
+  const id = data.id
+  const url = `${rootUrl}/${id}`
+  return await request
+    .patch(url)
+    .send(data)
+    .set('Authorization', `Bearer ${token}`)
+    .then((res) => res.body)
+}
 // export async function deleteConsumable(id: number) {
 //   const url = `${rootUrl}/${id}`
 //   return await request.delete(url)
@@ -72,9 +88,3 @@ export async function deleteConsumable({
 // }
 
 //needs function review
-
-export async function edit(Consumable: Consumable) {
-  const id = Consumable.id
-  const url = `${rootUrl}/${id}`
-  return await request.patch(url).send(Consumable)
-}
