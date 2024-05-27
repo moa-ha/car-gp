@@ -73,8 +73,8 @@ export async function deleteConsumable({
 
 //needs function review
 
-export async function edit(Consumable: Consumable) {
-  const id = Consumable.id
+export async function editConsumable(data: Consumable) {
+  const id = data.id
   const url = `${rootUrl}/${id}`
-  return await request.patch(url).send(Consumable)
+  return await request.patch(url).send(data)
 }

@@ -72,7 +72,7 @@ export function useEdit() {
   const client = useQueryClient()
 
   return useMutation({
-    mutationFn: (Consumable: Consumable) => api.edit(Consumable),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['editConsumable'] }),
+    mutationFn: (data: Consumable) => api.editConsumable(data),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
   })
 }
