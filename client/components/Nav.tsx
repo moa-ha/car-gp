@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom'
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
   const { user, logout, loginWithRedirect } = useAuth0()
-  // TODO: replace placeholder user object with the one from auth0
-  console.log(user)
 
   const handleSignOut = () => {
     console.log('sign out')

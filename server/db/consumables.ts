@@ -10,15 +10,14 @@ export async function getConsumableById(id: number) {
   return await db('consumables').where({ id }).first()
 }
 
-// export async function addConsumable(data: ConsumableData) {
-//   const [id] = await db('consumables').insert(data)
-//   return id
-// }
-
 export async function addConsumable(data: ConsumableData) {
   await db('consumables').insert(data)
 }
 
 export async function deleteConsumable(id: number) {
   await db('consumables').where({ id }).del()
+}
+
+export async function editConsumable(id: number, data: ConsumableData) {
+  await db('consumables').where({ id }).update(data)
 }

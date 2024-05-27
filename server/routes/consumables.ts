@@ -28,24 +28,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-//needs function review
-// router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
-//   if (!req.auth?.sub) {
-//     res.sendStatus(StatusCodes.UNAUTHORIZED)
-//     return
-//   }
-
-//   try {
-//     const { name, replaced, due, km } = req.body
-//     const id = await db.addConsumable({ name, replaced, due, km })
-//     res
-//       .setHeader('Location', `${req.baseUrl}/${id}`)
-//       .sendStatus(StatusCodes.CREATED)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
 router.post('/', checkJwt, async (req, res, next) => {
   const data = req.body
   try {
@@ -83,6 +65,16 @@ router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
   } catch (err) {
     res.status(500).json({ message: 'It is not deleted. Try again' })
     next(err)
+  }
+})
+
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const data = req.body
+  try {
+    await db.editConsumable(id, data)
+  } catch (e) {
+    res.status(500).json({ message: 'Failed to update' })
   }
 })
 export default router
