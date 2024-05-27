@@ -46,13 +46,14 @@ router.get('/:id', async (req, res, next) => {
 //   }
 // })
 
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req, res, next) => {
   const data = req.body
   try {
     await db.addConsumable(data)
+    res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
   } catch (e) {
-    console.log(e)
     res.status(500).json({ message: 'Something went wrong adding item' })
+    next(e)
   }
 })
 

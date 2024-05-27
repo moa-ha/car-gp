@@ -16,8 +16,37 @@ export async function getConsumableById(id: number) {
   return res.body as Consumable
 }
 
-export async function addConsumable(Consumable: ConsumableData) {
-  return await request.post(rootUrl).send(Consumable)
+interface AddConsumable {
+  consumable: ConsumableData
+  token: string
+}
+export async function addConsumable({
+  consumable,
+  token,
+}: AddConsumable): Promise<void> {
+  return await request
+    .post(rootUrl)
+    .send(consumable)
+    .set('Authorization', `Bearer ${token}`)
+    .then((res) => res.body)
+}
+
+interface DeleteConsumable {
+  id: number
+  token: string
+}
+export async function deleteConsumable({
+  id,
+  token,
+}: DeleteConsumable): Promise<void> {
+  const url = `${rootUrl}/${id}`
+  // await sleep(1000)
+
+  return await request
+    .delete(url)
+    .set('Authorization', `Bearer ${token}`)
+    .then((res) => res.body)
+  // .catch(logError)
 }
 
 // export async function deleteConsumable(id: number) {
@@ -41,20 +70,6 @@ export async function addConsumable(Consumable: ConsumableData) {
 //     throw err
 //   }
 // }
-interface Token {
-  id: number
-  token: string
-}
-export async function deleteConsumable({ id, token }: Token): Promise<void> {
-  const url = `${rootUrl}/${id}`
-  // await sleep(1000)
-
-  return await request
-    .delete(url)
-    .set('Authorization', `Bearer ${token}`)
-    .then((res) => res.body)
-  // .catch(logError)
-}
 
 //needs function review
 
