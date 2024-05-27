@@ -69,10 +69,14 @@ export function useDeleteConsumable() {
 
 //needs function review
 export function useEdit() {
+  const { getAccessTokenSilently } = useAuth0()
   const client = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Consumable) => api.editConsumable(data),
+    mutationFn: async (data: Consumable) => {
+      const token = await getAccessTokenSilently()
+      return api.editConsumable({ data, token })
+    },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
   })
 }

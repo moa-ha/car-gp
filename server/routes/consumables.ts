@@ -68,13 +68,17 @@ router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
   }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', checkJwt, async (req, res, next) => {
   const id = Number(req.params.id)
   const data = req.body
   try {
     await db.editConsumable(id, data)
+    res
+      .setHeader('Location', `${req.baseUrl}/${id}`)
+      .sendStatus(StatusCodes.CREATED)
   } catch (e) {
     res.status(500).json({ message: 'Failed to update' })
+    next(e)
   }
 })
 export default router
