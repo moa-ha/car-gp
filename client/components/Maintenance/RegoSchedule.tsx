@@ -1,12 +1,6 @@
-import { FormEvent } from 'react'
-
 function RegoSchedule({ date }: { date: string }) {
-  // let due
-  // due = date + e.target
-
   const handleClick = (month: number) => {
-    console.log(month)
-    // 여기에서 month를 이용하여 다른 작업을 수행할 수 있습니다.
+    date = month * 31 + date
   }
 
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -23,7 +17,7 @@ function RegoSchedule({ date }: { date: string }) {
         </button>
       ))}
 
-      {/* <p className="text-base">Renew before {date}</p> */}
+      <p className="text-base">Renew before {date}</p>
       {/* TODO: make push alrarm */}
       {/* <p className="text-base">Send notice ~~ before</p> */}
     </>
