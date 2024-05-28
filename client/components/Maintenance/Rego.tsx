@@ -24,7 +24,17 @@ function Rego() {
           </Link>
           : Check when your registration due
         </p>
-        <RegoSchedule />
+        {/* <div className="p-4">
+          When was it replaced?<br></br>
+          <input
+            className="m-2 rounded border border-gray-300 px-4 py-2"
+            onChange={handleChange}
+            type="date"
+            value={formState.replaced}
+            name="replaced"
+          />
+        </div> */}
+        <RegoSchedule date={date} />
       </div>
     </>
   )
