@@ -3,54 +3,26 @@ import { FormEvent } from 'react'
 function RegoSchedule({ date }: { date: string }) {
   // let due
   // due = date + e.target
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    const number = e.submitter.value
 
-    console.log(number)
+  const handleClick = (month: number) => {
+    console.log(month)
+    // 여기에서 month를 이용하여 다른 작업을 수행할 수 있습니다.
   }
+
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (
     <>
-      <form id="months" onSubmit={handleSubmit}>
-        <p>How many months have you registered?</p>
+      <p className="text-lg">How many months have you registered?</p>
+      {months.map((month) => (
+        <button
+          key={month}
+          className="mr-1 w-8 border p-1"
+          onClick={() => handleClick(month)}
+        >
+          {month}
+        </button>
+      ))}
 
-        <button type="submit" className="border p-1" name="number" value="1">
-          1
-        </button>
-        <button type="submit" className="border p-1" name="number" value="2">
-          2
-        </button>
-        <button type="submit" className="border p-1" name="number" value="3">
-          3
-        </button>
-        <button type="submit" className="border p-1" name="number" value="4">
-          4
-        </button>
-        <button type="submit" className="border p-1" name="number" value="5">
-          5
-        </button>
-        <button type="submit" className="border p-1" name="number" value="6">
-          6
-        </button>
-        <button type="submit" className="border p-1" name="number" value="7">
-          7
-        </button>
-        <button type="submit" className="border p-1" name="number" value="8">
-          8
-        </button>
-        <button type="submit" className="border p-1" name="number" value="9">
-          9
-        </button>
-        <button type="submit" className="border p-1" name="number" value="10">
-          10
-        </button>
-        <button type="submit" className="border p-1" name="number" value="11">
-          11
-        </button>
-        <button type="submit" className="border p-1" name="number" value="12">
-          12
-        </button>
-      </form>
       {/* <p className="text-base">Renew before {date}</p> */}
       {/* TODO: make push alrarm */}
       {/* <p className="text-base">Send notice ~~ before</p> */}
