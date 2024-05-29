@@ -11,26 +11,21 @@ function RegoSchedule() {
     rego: data?.rego,
     regoDue: data?.regoDue,
   })
-  const [date, setDate] = useState('')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(formState)
-
     const { value } = e.currentTarget
     setFormState((prev) => ({ ...prev, rego: value }))
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    console.log('passing ' + formState.rego)
-
-    setDate(formState.rego)
+    console.log(formState)
   }
 
   let due
 
-  const handleClick = (month: number) => {
-    due = month * 31 + date
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    console.log('rego ' + formState.rego)
+    console.log('month ' + e.currentTarget.key)
+    due = e.currentTarget.key * 31 + formState.rego
+    console.log('returned ' + due)
   }
 
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -46,24 +41,25 @@ function RegoSchedule() {
             value={formState.rego}
             name="rego"
           />
-          <button type="submit"> Save</button>
-          <RegoSchedule date={date} />
-        </form>
-      </div>
-      <p className="text-lg">How many months have you registered?</p>
-      {months.map((month) => (
-        <button
-          key={month}
-          className="mr-1 w-8 border p-1"
-          onClick={() => handleClick(month)}
-        >
-          {month}
-        </button>
-      ))}
 
-      <p className="text-base">Renew before {due}</p>
-      {/* TODO: make push alarm */}
-      {/* <p className="text-base">Send notice ~~ before</p> */}
+          <p className="text-lg">How many months have you registered?</p>
+          {months.map((month) => (
+            <button
+              key={month}
+              className="mr-1 w-8 border p-1"
+              onClick={() => handleClick(month)}
+            >
+              {month}
+            </button>
+          ))}
+          <button type="submit" className="btn-clear">
+            Check the due
+          </button>
+        </form>
+        <p className="text-base ">Renew before {due}</p>
+        {/* TODO: make push alarm */}
+        {/* <p className="text-base">Send notice ~~ before</p> */}
+      </div>
     </>
   )
 }

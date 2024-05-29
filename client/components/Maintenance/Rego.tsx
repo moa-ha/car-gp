@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import RegoSchedule from './RegoSchedule'
 
 function Rego() {
   return (
@@ -23,6 +24,7 @@ function Rego() {
           </Link>
           : Check when your registration due
         </p>
+        <RegoSchedule />
       </div>
     </>
   )
