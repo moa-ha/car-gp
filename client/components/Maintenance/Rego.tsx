@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom'
 import RegoSchedule from './RegoSchedule'
+import { useState } from 'react'
+import { useMaintenance } from '../../hooks/useMaintenance'
 
 function Rego() {
+  const { data } = useMaintenance()
+  const [formState, setFormState] = useState({
+    wof: data?.wof,
+    wofDue: data?.wofDue,
+    rego: data?.rego,
+    regoDue: data?.regoDue,
+  })
+
+  function handleChange(e: React.FormEvent<HTMLFormElement>) {
+    setFormState(e.currentTarget.value)
+  }
   return (
     <>
       <div className="relative text-2xl">
@@ -24,13 +37,13 @@ function Rego() {
           </Link>
           : Check when your registration due
         </p>
-        <div className="p-4">
+        <div className="p-4 text-base">
           When was it replaced?<br></br>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2"
             onChange={handleChange}
             type="date"
-            value={formState.replaced}
+            value={formState.rego}
             name="replaced"
           />
         </div>
