@@ -71,11 +71,9 @@ function RegoSchedule() {
           </button>
         </form>
         {due && (
-          <>
-            <p className="text-base ">
-              Renew before <StringDate date={due} />
-            </p>
-          </>
+          <p className="text-base ">
+            Renew before <StringDate date={due} />
+          </p>
         )}
         {/* TODO: make push alarm */}
         {/* <p className="text-base">Send notice ~~ before</p> */}
