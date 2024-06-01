@@ -60,7 +60,7 @@ function RegoSchedule() {
           {months.map((month) => (
             <button
               key={month}
-              className="mr-1 w-8 border p-1"
+              className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 p-1 hover:bg-sky-700' : 'mr-1 w-8 border p-1 hover:bg-sky-700'}`}
               onClick={(event) => handleMonthClick(event, month)}
             >
               {month}
