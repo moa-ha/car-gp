@@ -10,6 +10,7 @@ function Rego() {
           <Link
             to="https://transact.nzta.govt.nz/transactions/renewvehiclelicence/entry"
             className="underline"
+            target="blank"
           >
             Renewal of vehicle licence (rego)
           </Link>
@@ -19,6 +20,7 @@ function Rego() {
           <Link
             to="https://transact.nzta.govt.nz/transactions/CheckExpiry/entry"
             className="underline"
+            target="blank"
           >
             Check expiry query
           </Link>
