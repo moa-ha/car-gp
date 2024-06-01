@@ -1,3 +1,4 @@
+import Rego from '../../components/Maintenance/Rego'
 import WofSchedule from '../../components/Maintenance/WofSchedule'
 
 function Maintenance() {
@@ -14,7 +15,7 @@ function Maintenance() {
         <WofSchedule />
       </div>
       <div className="bg-opacity p-4">
-        <div className="relative text-2xl ">Rego</div>
+        <Rego />
       </div>
     </div>
   )
