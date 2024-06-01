@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { useMaintenance } from '../../hooks/useMaintenance'
+import { Maintenance } from '../../../models/maintenance'
 // TODO: separate wof vs rego
 
+interface Due {
+  due: string
+}
 function RegoSchedule() {
   const { data } = useMaintenance()
 
@@ -10,22 +14,29 @@ function RegoSchedule() {
     wofDue: data?.wofDue,
     rego: data?.rego,
     regoDue: data?.regoDue,
-  })
+  } as Maintenance)
+
+  let registered
+
+  function addMonths(date, months) {
+    date.setMonth(date.getMonth() + 10)
+    console.log('returned date: ' + date)
+
+    return date
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.currentTarget
     setFormState((prev) => ({ ...prev, rego: value }))
-    console.log(formState)
+    console.log(formState.rego)
+    registered = new Date(formState.rego)
+    console.log(registered)
+    addMonths(registered, 10)
   }
-
-  let due
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log('rego ' + formState.rego)
-    console.log('month ' + e.currentTarget.key)
-    due = e.currentTarget.key * 31 + formState.rego
-    console.log('returned ' + due)
+    console.log('handlesubmit is working')
   }
 
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -44,11 +55,7 @@ function RegoSchedule() {
 
           <p className="text-lg">How many months have you registered?</p>
           {months.map((month) => (
-            <button
-              key={month}
-              className="mr-1 w-8 border p-1"
-              onClick={() => handleClick(month)}
-            >
+            <button key={month} className="mr-1 w-8 border p-1">
               {month}
             </button>
           ))}
@@ -56,7 +63,7 @@ function RegoSchedule() {
             Check the due
           </button>
         </form>
-        <p className="text-base ">Renew before {due}</p>
+        {/* <p className="text-base ">Renew before {due}</p> */}
         {/* TODO: make push alarm */}
         {/* <p className="text-base">Send notice ~~ before</p> */}
       </div>
