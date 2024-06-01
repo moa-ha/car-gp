@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMaintenance } from '../../hooks/useMaintenance'
 import { Maintenance } from '../../../models/maintenance'
+import StringDate from '../StringDate'
 // TODO: separate wof vs rego
 
 function RegoSchedule() {
@@ -14,6 +15,7 @@ function RegoSchedule() {
   } as Maintenance)
   const [registered, setRegistered] = useState({})
   const [duration, setDuration] = useState(0)
+  const [due, setDue] = useState(null)
 
   // get the registered date - update the data and convert date into obj
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -31,18 +33,12 @@ function RegoSchedule() {
   // return added date
   function addMonths(date, months) {
     date.setMonth(date.getMonth() + months)
-    console.log('returned date: ' + date)
-
-    return date
+    setDue(date)
   }
 
   // return the added date using registered date + duration
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log(formState.rego)
-    console.log('registered: ' + registered)
-    console.log('duration: ' + duration)
-
     addMonths(registered, duration)
   }
 
@@ -74,7 +70,13 @@ function RegoSchedule() {
             Check the due
           </button>
         </form>
-        {/* <p className="text-base ">Renew before {due}</p> */}
+        {due && (
+          <>
+            <p className="text-base ">
+              Renew before <StringDate date={due} />
+            </p>
+          </>
+        )}
         {/* TODO: make push alarm */}
         {/* <p className="text-base">Send notice ~~ before</p> */}
       </div>
