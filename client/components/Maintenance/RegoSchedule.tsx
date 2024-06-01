@@ -3,9 +3,6 @@ import { useMaintenance } from '../../hooks/useMaintenance'
 import { Maintenance } from '../../../models/maintenance'
 // TODO: separate wof vs rego
 
-interface Due {
-  due: string
-}
 function RegoSchedule() {
   const { data } = useMaintenance()
 
@@ -15,28 +12,38 @@ function RegoSchedule() {
     rego: data?.rego,
     regoDue: data?.regoDue,
   } as Maintenance)
+  const [registered, setRegistered] = useState({})
+  const [duration, setDuration] = useState(0)
 
-  let registered
+  // get the registered date - update the data and convert date into obj
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.currentTarget
+    setFormState((prev) => ({ ...prev, [name]: value }))
+    setRegistered(new Date(value))
+  }
 
+  // get how many months registered
+  const handleMonthClick = (event, month) => {
+    event.preventDefault()
+    setDuration(month)
+  }
+
+  // return added date
   function addMonths(date, months) {
-    date.setMonth(date.getMonth() + 10)
+    date.setMonth(date.getMonth() + months)
     console.log('returned date: ' + date)
 
     return date
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = e.currentTarget
-    setFormState((prev) => ({ ...prev, rego: value }))
-    console.log(formState.rego)
-    registered = new Date(formState.rego)
-    console.log(registered)
-    addMonths(registered, 10)
-  }
-
+  // return the added date using registered date + duration
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log('handlesubmit is working')
+    console.log(formState.rego)
+    console.log('registered: ' + registered)
+    console.log('duration: ' + duration)
+
+    addMonths(registered, duration)
   }
 
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -55,7 +62,11 @@ function RegoSchedule() {
 
           <p className="text-lg">How many months have you registered?</p>
           {months.map((month) => (
-            <button key={month} className="mr-1 w-8 border p-1">
+            <button
+              key={month}
+              className="mr-1 w-8 border p-1"
+              onClick={(event) => handleMonthClick(event, month)}
+            >
               {month}
             </button>
           ))}
