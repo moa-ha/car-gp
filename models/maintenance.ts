@@ -3,4 +3,5 @@ export interface Maintenance {
   wofDue: string
   rego: string
   regoDue: string
+  user: string
 }

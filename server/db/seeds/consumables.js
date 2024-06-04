@@ -10,6 +10,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 10000,
+      user: '',
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 40000,
+      user: '',
     },
     {
       id: 3,
@@ -24,6 +26,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 80000,
+      user: '',
     },
     {
       id: 4,
@@ -31,6 +34,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 20000,
+      user: '',
     },
     {
       id: 5,
@@ -38,6 +42,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 50000,
+      user: '',
     },
 
     {
@@ -46,6 +51,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 40000,
+      user: '',
     },
   ])
 }
