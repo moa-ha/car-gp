@@ -1,7 +1,8 @@
 import { MouseEvent, SetStateAction, useState } from 'react'
 import { useMaintenance } from '../../hooks/useMaintenance'
 import { Maintenance } from '../../../models/maintenance'
-import StringDate from '../StringDate'
+import SaveRego from './SaveRego'
+import { stringDate } from '../function'
 // TODO: separate wof vs rego
 
 function RegoSchedule() {
@@ -15,7 +16,7 @@ function RegoSchedule() {
   } as Maintenance)
   const [registered, setRegistered] = useState({})
   const [duration, setDuration] = useState(0)
-  const [due, setDue] = useState(null)
+  const [due, setDue] = useState('')
 
   // get the registered date - update the data and convert date into obj
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -25,10 +26,7 @@ function RegoSchedule() {
   }
 
   // get how many months registered
-  const handleMonthClick = (
-    event: MouseEvent<HTMLButtonElement, MouseEvent>,
-    month: SetStateAction<number>,
-  ) => {
+  const handleMonthClick = (event, month) => {
     event.preventDefault()
     setDuration(month)
   }
@@ -36,7 +34,8 @@ function RegoSchedule() {
   // return added date
   function addMonths(date, months) {
     date.setMonth(date.getMonth() + months)
-    setDue(date)
+    const returned = stringDate(date)
+    setDue(returned)
   }
 
   // return the added date using registered date + duration
@@ -74,9 +73,10 @@ function RegoSchedule() {
           </button>
         </form>
         {due && (
-          <p className="text-base ">
-            Renew before <StringDate date={due} />
-          </p>
+          <>
+            <p className="text-base ">Renew before {due}</p>
+            <SaveRego due={due} />
+          </>
         )}
         {/* TODO: make push alarm */}
         {/* <p className="text-base">Send notice ~~ before</p> */}
