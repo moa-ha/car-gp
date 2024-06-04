@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEvent, SetStateAction, useState } from 'react'
 import { useMaintenance } from '../../hooks/useMaintenance'
 import { Maintenance } from '../../../models/maintenance'
 import StringDate from '../StringDate'
@@ -25,7 +25,10 @@ function RegoSchedule() {
   }
 
   // get how many months registered
-  const handleMonthClick = (event, month) => {
+  const handleMonthClick = (
+    event: MouseEvent<HTMLButtonElement, MouseEvent>,
+    month: SetStateAction<number>,
+  ) => {
     event.preventDefault()
     setDuration(month)
   }
