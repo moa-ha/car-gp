@@ -14,7 +14,6 @@ export function useConsumablesMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>,
 ) {
   const queryClient = useQueryClient()
-
   const mutation = useMutation({
     mutationFn,
     onSuccess: () => {
@@ -43,11 +42,13 @@ export function useGetConsumableById(id: number) {
 }
 
 export function useAddConsumable() {
-  const { getAccessTokenSilently } = useAuth0()
+  const { getAccessTokenSilently, user } = useAuth0()
   const client = useQueryClient()
   return useMutation({
     mutationFn: async (consumable: ConsumableData) => {
       const token = await getAccessTokenSilently()
+      console.log(user?.sub)
+
       return api.addConsumable({ consumable, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
@@ -75,6 +76,8 @@ export function useEdit() {
   return useMutation({
     mutationFn: async (data: Consumable) => {
       const token = await getAccessTokenSilently()
+      console.log(token)
+
       return api.editConsumable({ data, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),

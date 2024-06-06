@@ -1,7 +1,4 @@
 export async function seed(knex) {
-  // Deletes ALL existing entries
-  await knex('consumables').del()
-
   // Inserts seed entries
   await knex('consumables').insert([
     {
@@ -10,6 +7,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 10000,
+      user: 'default',
     },
     {
       id: 2,
@@ -17,6 +15,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 40000,
+      user: 'default',
     },
     {
       id: 3,
@@ -24,6 +23,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 80000,
+      user: 'default',
     },
     {
       id: 4,
@@ -31,6 +31,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 20000,
+      user: 'default',
     },
     {
       id: 5,
@@ -38,6 +39,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 50000,
+      user: 'default',
     },
 
     {
@@ -46,6 +48,7 @@ export async function seed(knex) {
       replaced: '',
       due: '',
       km: 40000,
+      user: 'default',
     },
   ])
 }

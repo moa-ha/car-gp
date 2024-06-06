@@ -5,6 +5,9 @@ export interface ConsumableData {
   km: number
 }
 
-export interface Consumable extends ConsumableData {
+export interface ConsumableUser extends ConsumableData {
+  user: string
+}
+export interface Consumable extends ConsumableUser {
   id: number
 }

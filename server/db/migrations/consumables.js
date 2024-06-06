@@ -10,6 +10,7 @@ export async function up(knex) {
     table.date('replaced')
     table.date('due')
     table.integer('km')
+    table.string('user').references('users.id')
   })
 }
 

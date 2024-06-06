@@ -1,23 +1,51 @@
 import db from './connection.ts'
-import { Consumable, ConsumableData } from '../../models/consumable.ts'
+import connection from './connection.ts'
+import {
+  Consumable,
+  ConsumableData,
+  ConsumableUser,
+} from '../../models/consumable.ts'
 
-export async function getConsumables() {
-  const consumables = await db('consumables')
-  return consumables as Consumable[]
+// const columns = ['id', 'name', 'replaced', 'due', 'km']
+
+export async function getConsumables(): Promise<Consumable[]> {
+  return db('consumables')
 }
+//adding not working with this
+export async function addConsumable(
+  consumable: ConsumableData,
+  user: string,
+): Promise<Consumable> {
+  const consumableAuthorized: ConsumableUser = {
+    name: consumable.name,
+    replaced: consumable.replaced,
+    due: consumable.due,
+    km: consumable.km,
+    user: user,
+  }
+
+  return db('consumable').insert(consumableAuthorized)
+  // .returning(columns)
+  // .then((insertedEntries) => insertedEntries[0])
+}
+
+// export async function getConsumables() {
+//   const consumables = await db('consumables')
+//   return consumables as Consumable[]
+// }
 
 export async function getConsumableById(id: number) {
-  return await db('consumables').where({ id }).first()
+  return await connection('consumables').where({ id }).first()
 }
-
-export async function addConsumable(data: ConsumableData) {
-  await db('consumables').insert(data)
-}
+// adding is working with this
+// export async function addConsumable(data: ConsumableData) {
+//   await connection('consumables').insert(data)
+// }
 
 export async function deleteConsumable(id: number) {
-  await db('consumables').where({ id }).del()
+  await connection('consumables').where({ id }).del()
 }
 
 export async function editConsumable(id: number, data: ConsumableData) {
-  await db('consumables').where({ id }).update(data)
+  await connection('consumables').where({ id }).update(data)
 }
