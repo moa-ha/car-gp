@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+//adding not working with this
 router.post('/', checkJwt, async (req: JwtRequest, res) => {
   const { consumable } = req.body as { consumable: ConsumableData }
   const auth0Id = req.auth ? req.auth.sub : undefined
@@ -57,6 +58,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+//adding is working with this
 // router.post('/', checkJwt, async (req, res, next) => {
 //   const data = req.body
 //   try {

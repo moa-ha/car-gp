@@ -11,7 +11,7 @@ import {
 export async function getConsumables(): Promise<Consumable[]> {
   return db('consumables')
 }
-
+//adding not working with this
 export async function addConsumable(
   consumable: ConsumableData,
   user: string,
@@ -37,7 +37,7 @@ export async function addConsumable(
 export async function getConsumableById(id: number) {
   return await connection('consumables').where({ id }).first()
 }
-
+// adding is working with this
 // export async function addConsumable(data: ConsumableData) {
 //   await connection('consumables').insert(data)
 // }

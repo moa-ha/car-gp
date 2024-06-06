@@ -6,15 +6,17 @@ import { useAddConsumable } from '../../hooks/useConsumables'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import SearchBar from '../../components/Consumables/SearchBar'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Add() {
   const navigate = useNavigate()
+  const { user } = useAuth0()
   const [formState, setFormState] = useState({
     name: '',
     replaced: '',
     due: '',
     km: 0,
-    user: '',
+    user: user?.sub,
   })
   const mutation = useAddConsumable()
 
