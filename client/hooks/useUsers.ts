@@ -2,9 +2,17 @@ import {
   useQueryClient,
   useMutation,
   UseMutationResult,
+  useQuery,
 } from '@tanstack/react-query'
-import { addUser } from '../apis/user'
+import { addUser, getUsers } from '../apis/user'
 import { User } from '../../models/user'
+
+export function useUsers() {
+  return useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+  })
+}
 
 export function useAddUser(): UseMutationResult<void, Error, User, unknown> {
   const client = useQueryClient()

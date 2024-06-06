@@ -8,3 +8,8 @@ export async function getUsers(): Promise<User[]> {
 export async function addUsers(user: User) {
   await db('users').insert(user)
 }
+
+export async function getUserById(id: string): Promise<User | null> {
+  const user = await db('users').where({ id }).first()
+  return user || null
+}

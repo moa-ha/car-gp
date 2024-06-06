@@ -14,7 +14,6 @@ export function useConsumablesMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>,
 ) {
   const queryClient = useQueryClient()
-
   const mutation = useMutation({
     mutationFn,
     onSuccess: () => {

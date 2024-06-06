@@ -3,9 +3,9 @@ import { User } from '../../models/user'
 
 const rootUrl = '/api/v1'
 
-export async function getUsers() {
+export async function getUsers(): Promise<User[]> {
   const res = await request.get(rootUrl)
-  return res.body as User
+  return res.body as User[]
 }
 
 export async function addUser(user: User) {
