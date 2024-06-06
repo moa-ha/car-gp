@@ -22,6 +22,8 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
   const auth0Id = req.auth ? req.auth.sub : undefined
 
   if (!consumable) {
+    console.log(consumable)
+
     console.error('No consumable item')
     return res.status(400).send('Bad request')
   }
@@ -33,11 +35,10 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
 
   try {
     const newConsumable = await db.addConsumable(consumable, auth0Id)
-
     res.status(201).json({ consumable: newConsumable })
   } catch (error) {
     console.error(error)
-    res.status(500).send('Something went wrong')
+    res.status(500).send("Couldn't add consumable item")
   }
 })
 
