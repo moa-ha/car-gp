@@ -14,6 +14,7 @@ function Add() {
     replaced: '',
     due: '',
     km: 0,
+    user: '',
   })
   const mutation = useAddConsumable()
 

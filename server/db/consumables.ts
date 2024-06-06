@@ -1,6 +1,10 @@
 import db from './connection.ts'
 import connection from './connection.ts'
-import { Consumable, ConsumableData } from '../../models/consumable.ts'
+import {
+  Consumable,
+  ConsumableData,
+  ConsumableUser,
+} from '../../models/consumable.ts'
 
 const columns = ['id', 'name', 'replaced', 'due', 'km']
 
@@ -10,14 +14,19 @@ export async function getConsumables(): Promise<Consumable[]> {
     .orderBy('id')
 }
 
-export async function addConsumable(consumable: ConsumableData) {
-  // const consumableAuthorized: ConsumableAuthorized = {
-  //   name: consumable.name,
-  //   average_grams_each: consumable.averageGramsEach,
-  //   added_by_user: userId,
-  // }
+export async function addConsumable(
+  consumable: ConsumableData,
+  user: string,
+): Promise<Consumable> {
+  const consumableAuthorized: ConsumableUser = {
+    name: consumable.name,
+    replaced: consumable.replaced,
+    due: consumable.due,
+    km: consumable.km,
+    user: user,
+  }
 
-  return db('consumable').insert(consumable)
+  return db('consumable').insert(consumableAuthorized)
   // .returning(columns)
   // .then((insertedEntries) => insertedEntries[0])
 }

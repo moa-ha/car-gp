@@ -75,6 +75,8 @@ export function useEdit() {
   return useMutation({
     mutationFn: async (data: Consumable) => {
       const token = await getAccessTokenSilently()
+      console.log(token)
+
       return api.editConsumable({ data, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),

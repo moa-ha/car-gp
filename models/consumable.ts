@@ -3,9 +3,11 @@ export interface ConsumableData {
   replaced: string
   due: string
   km: number
-  user: string
 }
 
-export interface Consumable extends ConsumableData {
+export interface ConsumableUser extends ConsumableData {
+  user: string
+}
+export interface Consumable extends ConsumableUser {
   id: number
 }
