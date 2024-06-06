@@ -11,7 +11,7 @@ server.use(express.json())
 
 server.use('/api/v1/consumables', consumables)
 server.use('/api/v1/maintenance', maintenance)
-server.use('/api/v1/user', user)
+server.use('/api/v1', user)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

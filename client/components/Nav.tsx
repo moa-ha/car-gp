@@ -3,10 +3,25 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
 import logo from '../styles/images/logo-4.png'
 
 import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { useAddUser } from '../hooks/useUsers.ts'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
-  const { user, logout, loginWithRedirect } = useAuth0()
+  const { user, logout, loginWithRedirect, isAuthenticated } = useAuth0()
+  const mutation = useAddUser()
+  const hasRunEffect = useRef(false)
+
+  useEffect(() => {
+    if (!hasRunEffect.current && isAuthenticated && user && user.sub) {
+      mutation.mutate({
+        id: user.sub,
+        nickname: user.nickname || '',
+      })
+      console.log('added user ' + user.sub)
+      hasRunEffect.current = true
+    }
+  }, [isAuthenticated, user, mutation])
 
   const handleSignOut = () => {
     console.log('sign out')
