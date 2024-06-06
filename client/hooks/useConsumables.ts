@@ -43,11 +43,13 @@ export function useGetConsumableById(id: number) {
 }
 
 export function useAddConsumable() {
-  const { getAccessTokenSilently } = useAuth0()
+  const { getAccessTokenSilently, user } = useAuth0()
   const client = useQueryClient()
   return useMutation({
     mutationFn: async (consumable: ConsumableData) => {
       const token = await getAccessTokenSilently()
+      console.log(user?.sub)
+
       return api.addConsumable({ consumable, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),

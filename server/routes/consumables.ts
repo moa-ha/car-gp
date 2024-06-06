@@ -21,10 +21,13 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
   const { consumable } = req.body as { consumable: ConsumableData }
   const auth0Id = req.auth ? req.auth.sub : undefined
 
+  // make it save to users table when sign in
   if (!consumable) {
-    console.log(consumable)
+    console.log('authId: ' + auth0Id)
 
-    console.error('No consumable item')
+    // console.log(consumable)
+
+    console.error("Couldn't add the consumable item")
     return res.status(400).send('Bad request')
   }
 

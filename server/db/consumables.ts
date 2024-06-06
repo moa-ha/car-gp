@@ -6,12 +6,10 @@ import {
   ConsumableUser,
 } from '../../models/consumable.ts'
 
-const columns = ['id', 'name', 'replaced', 'due', 'km']
+// const columns = ['id', 'name', 'replaced', 'due', 'km']
 
 export async function getConsumables(): Promise<Consumable[]> {
   return db('consumables')
-    .select(...columns)
-    .orderBy('id')
 }
 
 export async function addConsumable(
