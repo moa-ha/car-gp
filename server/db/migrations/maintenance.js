@@ -5,6 +5,7 @@
 
 export async function up(knex) {
   return knex.schema.createTable('maintenance', (table) => {
+    table.increments('id').primary()
     table.date('wof')
     table.date('wofDue')
     table.date('rego')
