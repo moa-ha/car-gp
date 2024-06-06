@@ -1,5 +1,5 @@
 export interface UserData {
-  name: string
+  nickname: string
 }
 
 export interface User extends UserData {
