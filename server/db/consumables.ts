@@ -1,5 +1,4 @@
 import db from './connection.ts'
-import connection from './connection.ts'
 import {
   Consumable,
   ConsumableData,
@@ -11,23 +10,24 @@ import {
 export async function getConsumables(): Promise<Consumable[]> {
   return db('consumables')
 }
-//adding not working with this
-export async function addConsumable(
-  consumable: ConsumableData,
-  user: string,
-): Promise<Consumable> {
-  const consumableAuthorized: ConsumableUser = {
-    name: consumable.name,
-    replaced: consumable.replaced,
-    due: consumable.due,
-    km: consumable.km,
-    user: user,
-  }
 
-  return db('consumable').insert(consumableAuthorized)
-  // .returning(columns)
-  // .then((insertedEntries) => insertedEntries[0])
-}
+//adding not working with this
+// export async function addConsumable(
+//   consumable: ConsumableData,
+//   user: string,
+// ): Promise<Consumable> {
+//   const consumableAuthorized: ConsumableUser = {
+//     name: consumable.name,
+//     replaced: consumable.replaced,
+//     due: consumable.due,
+//     km: consumable.km,
+//     user: user,
+//   }
+
+//   return db('consumable').insert(consumableAuthorized)
+//   // .returning(columns)
+//   // .then((insertedEntries) => insertedEntries[0])
+// }
 
 // export async function getConsumables() {
 //   const consumables = await db('consumables')
@@ -35,17 +35,22 @@ export async function addConsumable(
 // }
 
 export async function getConsumableById(id: number) {
-  return await connection('consumables').where({ id }).first()
+  return await db('consumables').where({ id }).first()
 }
 // adding is working with this
-// export async function addConsumable(data: ConsumableData) {
-//   await connection('consumables').insert(data)
-// }
+export async function addConsumable(data: ConsumableData) {
+  await db('consumables').insert(data)
+}
+
+export async function getConsumablesByUser(id: string): Promise<Consumable[]> {
+  const userId = id || 'default'
+  return await db('consumables').where('user', userId)
+}
 
 export async function deleteConsumable(id: number) {
-  await connection('consumables').where({ id }).del()
+  await db('consumables').where({ id }).del()
 }
 
 export async function editConsumable(id: number, data: ConsumableData) {
-  await connection('consumables').where({ id }).update(data)
+  await db('consumables').where({ id }).update(data)
 }
