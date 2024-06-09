@@ -7,58 +7,28 @@ import { ConsumableData } from '../../models/consumable.ts'
 
 const router = Router()
 
-router.get('/', async (req: JwtRequest, res) => {
-  try {
-    const consumables = await db.getConsumables()
-    res.json(consumables)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Something went wrong' })
-  }
-})
-
 // router.get('/', async (req: JwtRequest, res) => {
-//   const user = req.auth ? req.auth.sub : undefined
-//   if (user) {
-//     try {
-//       const consumables = await db.getConsumables()
-//       res.json(consumables)
-//     } catch (error) {
-//       console.log(error)
-//       res.status(500).json({ message: 'Something went wrong' })
-//     }
-//   } else {
-//     try {
-//       const consumables = await db.getConsumablesDefault()
-//       res.json(consumables)
-//     } catch (error) {
-//       console.log(error)
-//       res.status(500).json({ message: 'Something went wrong' })
-//     }
-//   }
-// })
-
-// router.get('/', async (req: JwtRequest, res) => {
-//   const user = req.auth ? req.auth.sub : undefined
-//   console.log('user: ', user)
-//   // console.log(req.user);
 //   try {
-//     let consumables
-
-//     if (user) {
-//       consumables = await db.getConsumablesByUser(user)
-//       // console.log('logged out & : ' + JSON.stringify(consumables, null, 2))
-//     } else {
-//       consumables = await db.getConsumablesByUser('default')
-//       // console.log('logged in & : ' + JSON.stringify(consumables, null, 2))
-//     }
-
+//     const consumables = await db.getConsumables()
 //     res.json(consumables)
 //   } catch (error) {
 //     console.log(error)
 //     res.status(500).json({ message: 'Something went wrong' })
 //   }
 // })
+
+//try with hard coded auth Id
+router.get('/', async (req, res) => {
+  try {
+    const consumables = await db.getConsumablesByUser(
+      'auth0|6661ad75adb0decb4d921af5',
+    )
+    res.json(consumables)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+})
 
 //adding not working with this
 // router.post('/', checkJwt, async (req: JwtRequest, res) => {
