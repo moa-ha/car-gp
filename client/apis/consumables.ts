@@ -5,10 +5,16 @@ import { Consumable, ConsumableData } from '../../models/consumable'
 
 const rootUrl = '/api/v1/consumables'
 
-export async function getConsumables(): Promise<Consumable[]> {
-  return await request.get(rootUrl).then((res) => {
-    return res.body
-  })
+export async function getConsumables(token: string): Promise<Consumable[]> {
+  try {
+    const res = await request
+      .get(rootUrl)
+      .set('Authorization', `Bearer ${token}`)
+
+    return res.body as Consumable[]
+  } catch (error) {
+    throw new Error(`Failed to fetch consumables: ${error}`)
+  }
 }
 
 export async function getConsumableById(id: number) {
@@ -40,7 +46,6 @@ export async function deleteConsumable({
   token,
 }: DeleteConsumable): Promise<void> {
   const url = `${rootUrl}/${id}`
-  // await sleep(1000)
 
   return await request
     .delete(url)
