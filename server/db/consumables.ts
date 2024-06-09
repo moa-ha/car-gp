@@ -1,13 +1,5 @@
 import db from './connection.ts'
-import {
-  Consumable,
-  ConsumableData,
-  ConsumableUser,
-} from '../../models/consumable.ts'
-
-// export async function getConsumables(): Promise<Consumable[]> {
-//   return db('consumables')
-// }
+import { Consumable, ConsumableData } from '../../models/consumable.ts'
 
 export async function getConsumablesByUser(id: string): Promise<Consumable[]> {
   return db('consumables').where('user', id).orWhere('user', 'default')
