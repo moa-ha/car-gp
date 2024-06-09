@@ -3,26 +3,16 @@ import checkJwt, { JwtRequest } from '../auth0.ts'
 import { StatusCodes } from 'http-status-codes'
 
 import * as db from '../db/consumables.ts'
-import { ConsumableData } from '../../models/consumable.ts'
 
 const router = Router()
 
-// router.get('/', async (req: JwtRequest, res) => {
-//   try {
-//     const consumables = await db.getConsumables()
-//     res.json(consumables)
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json({ message: 'Something went wrong' })
-//   }
-// })
+router.get('/', checkJwt, async (req, res) => {
+  console.log(Object.keys(req))
 
-//try with hard coded auth Id
-router.get('/', async (req, res) => {
+  const user = req.auth ? req.auth.sub : 'default'
+
   try {
-    const consumables = await db.getConsumablesByUser(
-      'auth0|6661ad75adb0decb4d921af5',
-    )
+    const consumables = await db.getConsumablesByUser(user)
     res.json(consumables)
   } catch (error) {
     console.log(error)
@@ -74,6 +64,8 @@ router.get('/:id', async (req, res, next) => {
 //adding is working with this
 router.post('/', checkJwt, async (req, res, next) => {
   const data = req.body
+  console.log(Object.keys(req))
+
   try {
     await db.addConsumable(data)
     res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
