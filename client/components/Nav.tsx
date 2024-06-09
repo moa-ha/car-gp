@@ -18,7 +18,6 @@ function Nav() {
         id: user.sub,
         nickname: user.nickname || '',
       })
-      console.log('added user ' + user.sub)
       hasRunEffect.current = true
     }
   }, [isAuthenticated, user, mutation])
