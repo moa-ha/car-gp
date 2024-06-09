@@ -4,6 +4,7 @@ import {
   useMutation,
   useQueryClient,
   MutationFunction,
+  UseQueryResult,
 } from '@tanstack/react-query'
 
 import * as api from '../apis/consumables'
@@ -28,7 +29,7 @@ export function useConsumables() {
   const { getAccessTokenSilently } = useAuth0()
 
   const query = useQuery<Consumable[], Error>({
-    queryKey: ['consumables'], // queryKey 는 문자열로 설정합니다.
+    queryKey: ['consumables'],
     queryFn: async () => {
       const token = await getAccessTokenSilently()
       return api.getConsumables(token)
@@ -40,10 +41,17 @@ export function useConsumables() {
   }
 }
 
-export function useGetConsumableById(id: number) {
-  return useQuery({
-    queryKey: ['consumable'],
-    queryFn: () => api.getConsumableById(id),
+export function useGetConsumableById(
+  id: number,
+): UseQueryResult<Consumable, Error> {
+  const { getAccessTokenSilently } = useAuth0()
+
+  return useQuery<Consumable, Error>({
+    queryKey: ['consumable', id],
+    queryFn: async () => {
+      const token = await getAccessTokenSilently()
+      return api.getConsumableById(token, id) // Ensure this returns a single Consumable, not an array
+    },
   })
 }
 
