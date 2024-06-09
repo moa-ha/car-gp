@@ -25,10 +25,16 @@ export function useConsumablesMutation<TData = unknown, TVariables = unknown>(
 }
 
 export function useConsumables() {
-  const query = useQuery({
-    queryKey: ['consumables'],
-    queryFn: api.getConsumables,
+  const { getAccessTokenSilently } = useAuth0()
+
+  const query = useQuery<Consumable[], Error>({
+    queryKey: ['consumables'], // queryKey 는 문자열로 설정합니다.
+    queryFn: async () => {
+      const token = await getAccessTokenSilently()
+      return api.getConsumables(token)
+    },
   })
+
   return {
     ...query,
   }
