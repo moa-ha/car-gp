@@ -5,18 +5,13 @@ import {
   ConsumableUser,
 } from '../../models/consumable.ts'
 
-export async function getConsumables(): Promise<Consumable[]> {
-  return db('consumables')
+// export async function getConsumables(): Promise<Consumable[]> {
+//   return db('consumables')
+// }
+
+export async function getConsumablesByUser(id: string): Promise<Consumable[]> {
+  return db('consumables').where('user', id).orWhere('user', 'default')
 }
-
-// export async function getConsumablesDefault(): Promise<Consumable[]> {
-//   return db('consumables').where('user', 'default')
-// }
-
-// export async function getConsumablesByUser(id: string): Promise<Consumable[]> {
-//   const userId = id || 'default'
-//   return await db('consumables').where('user', userId)
-// }
 
 //adding not working with this
 // export async function addConsumable(
@@ -34,11 +29,6 @@ export async function getConsumables(): Promise<Consumable[]> {
 //   return db('consumable').insert(consumableAuthorized)
 //   // .returning(columns)
 //   // .then((insertedEntries) => insertedEntries[0])
-// }
-
-// export async function getConsumables() {
-//   const consumables = await db('consumables')
-//   return consumables as Consumable[]
 // }
 
 export async function getConsumableById(id: number) {
