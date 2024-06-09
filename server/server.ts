@@ -10,7 +10,7 @@ const server = express()
 
 server.use(express.json())
 
-// server.use('/api/v1/consumables', checkJwt)
+server.use('/api/v1', checkJwt)
 
 server.use('/api/v1/consumables', consumables)
 server.use('/api/v1/maintenance', maintenance)
