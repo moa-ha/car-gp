@@ -4,10 +4,13 @@ import * as Path from 'node:path'
 import consumables from './routes/consumables.ts'
 import maintenance from './routes/maintenance.ts'
 import user from './routes/user.ts'
+import checkJwt from './auth0.ts'
 
 const server = express()
 
 server.use(express.json())
+
+// server.use('/api/v1/consumables', checkJwt)
 
 server.use('/api/v1/consumables', consumables)
 server.use('/api/v1/maintenance', maintenance)

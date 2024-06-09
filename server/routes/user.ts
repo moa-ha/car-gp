@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/sign-up', async (req, res) => {
+router.post('/', async (req, res) => {
   const { id, nickname } = req.body
   if (!id || !nickname) {
     return res.status(400).send('Invalid user data')

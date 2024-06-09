@@ -9,5 +9,5 @@ export async function getUsers(): Promise<User[]> {
 }
 
 export async function addUser(user: User) {
-  await request.post(`${rootUrl}/sign-up`).send(user)
+  await request.post(rootUrl).send(user)
 }

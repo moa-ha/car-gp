@@ -5,6 +5,7 @@ const useIsAuthenticated = () => {
   const auth = useAuth0()
   return auth.isAuthenticated
 }
+
 interface Props {
   children: React.ReactNode
 }
