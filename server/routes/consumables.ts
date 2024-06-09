@@ -3,23 +3,16 @@ import checkJwt, { JwtRequest } from '../auth0.ts'
 import { StatusCodes } from 'http-status-codes'
 
 import * as db from '../db/consumables.ts'
-import { ConsumableData } from '../../models/consumable.ts'
 
 const router = Router()
 
-router.get('/', async (req: JwtRequest, res) => {
-  const user = req.auth ? req.auth.sub : undefined
-  // const verifiedUser = req.auth?.sub || 'default'
+router.get('/', checkJwt, async (req, res) => {
+  console.log(Object.keys(req))
+
+  const user = req.auth ? req.auth.sub : 'default'
 
   try {
-    let consumables
-
-    if (!user) {
-      consumables = await db.getConsumablesByUser('default')
-    } else {
-      consumables = await db.getConsumablesByUser(user)
-    }
-
+    const consumables = await db.getConsumablesByUser(user)
     res.json(consumables)
   } catch (error) {
     console.log(error)
@@ -71,6 +64,8 @@ router.get('/:id', async (req, res, next) => {
 //adding is working with this
 router.post('/', checkJwt, async (req, res, next) => {
   const data = req.body
+  console.log(Object.keys(req))
+
   try {
     await db.addConsumable(data)
     res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
