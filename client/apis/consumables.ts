@@ -17,9 +17,15 @@ export async function getConsumables(token: string): Promise<Consumable[]> {
   }
 }
 
-export async function getConsumableById(id: number) {
-  const res = await request.get(`${rootUrl}/${id}`)
-  return res.body as Consumable
+export async function getConsumableById(token: string, id: number) {
+  try {
+    const res = await request
+      .get(`${rootUrl}/${id}`)
+      .set('Authorization', `Bearer ${token}`)
+    return res.body as Consumable
+  } catch (error) {
+    throw new Error(`Failed to fetch consumables: ${error}`)
+  }
 }
 
 interface AddConsumable {

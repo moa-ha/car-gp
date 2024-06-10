@@ -6,7 +6,7 @@ import * as db from '../db/consumables.ts'
 
 const router = Router()
 
-router.get('/', checkJwt, async (req, res) => {
+router.get('/', async (req, res) => {
   console.log(Object.keys(req))
 
   const user = req.auth ? req.auth.sub : 'default'
@@ -62,7 +62,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //adding is working with this
-router.post('/', checkJwt, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const data = req.body
   console.log(Object.keys(req))
 
@@ -75,23 +75,7 @@ router.post('/', checkJwt, async (req, res, next) => {
   }
 })
 
-router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
-  // LEAVE IT FOR REFERENCE FOR FUTURE
-  // if (!req.auth?.sub) {
-  //   res.sendStatus(StatusCodes.UNAUTHORIZED)
-  //   return
-  // }
-
-  // const auth0Id = req.auth ? req.auth.sub : undefined
-  // if (!id) {
-  //   console.error('Invalid id')
-  //   return res.status(400).send('Bad request')
-  // }
-
-  // if (!auth0Id) {
-  //   console.error('No auth0Id')
-  //   return res.status(401).send('Unauthorized')
-  // }
+router.delete('/:id', async (req: JwtRequest, res, next) => {
   const id = Number(req.params.id)
   try {
     await db.deleteConsumable(id)
@@ -104,7 +88,7 @@ router.delete('/:id', checkJwt, async (req: JwtRequest, res, next) => {
   }
 })
 
-router.patch('/:id', checkJwt, async (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
   const id = Number(req.params.id)
   const data = req.body
   try {
