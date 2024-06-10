@@ -9,9 +9,8 @@ export async function getUsers(): Promise<User[]> {
 //   await db('users').insert(user)
 // }
 
-export async function getUserById(id: string): Promise<User | null> {
-  const user = await db('users').where({ id }).first()
-  return user || null
+export async function getUserById(id: string): Promise<User> {
+  return db('users').where({ id }).first()
 }
 
 export async function newUser(user: User) {
