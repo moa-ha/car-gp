@@ -6,11 +6,11 @@ import * as db from '../db/consumables.ts'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/', async (req: JwtRequest, res) => {
   const user = req.auth ? req.auth.sub : 'default'
 
   try {
-    const consumables = await db.getConsumablesByUser(user)
+    const consumables = await db.getConsumablesByUser(String(user))
     res.json(consumables)
   } catch (error) {
     console.log(error)
