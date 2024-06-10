@@ -14,7 +14,7 @@ export default createRoutesFromElements(
       <Route path="/consumables/:id" element={<Edit />} />
       <Route path="/consumables/add" element={<Add />} />
       <Route path="/maintenance" element={<Maintenance />} />
-      <Route path="/consumables/guest" element={<Guest />} />
+      <Route path="/guest" element={<Guest />} />
     </Route>
   </Route>,
 )
