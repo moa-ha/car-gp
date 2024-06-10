@@ -3,9 +3,6 @@ import DateInput from '../../components/Consumables/DateInput'
 
 function Guest() {
   const { data } = useGuestConsumables()
-  if (data) {
-    console.log(data)
-  }
 
   return (
     <div className="p-4">
