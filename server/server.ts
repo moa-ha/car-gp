@@ -5,16 +5,17 @@ import consumables from './routes/consumables.ts'
 import maintenance from './routes/maintenance.ts'
 import user from './routes/user.ts'
 import checkJwt from './auth0.ts'
+import guest from './routes/guest.ts'
 
 const server = express()
 
 server.use(express.json())
 
-server.use('/api/v1', checkJwt)
+server.use('/api/v1/consumables', checkJwt, consumables)
+server.use('/api/v1/maintenance', checkJwt, maintenance)
+server.use('/api/v1/user', checkJwt, user)
 
-server.use('/api/v1/consumables', consumables)
-server.use('/api/v1/maintenance', maintenance)
-server.use('/api/v1', user)
+server.use('/api/v1/guest', guest)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

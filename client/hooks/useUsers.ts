@@ -4,7 +4,7 @@ import {
   UseMutationResult,
   useQuery,
 } from '@tanstack/react-query'
-import { addUser, getUsers } from '../apis/user'
+import { addUser, getUserById, getUsers } from '../apis/user'
 import { User } from '../../models/user'
 
 export function useUsers() {
@@ -19,7 +19,10 @@ export function useAddUser(): UseMutationResult<void, Error, User, unknown> {
 
   return useMutation({
     mutationFn: async (user: User) => {
-      await addUser(user)
+      const existingUser = getUserById(user.id)
+      if (!existingUser) {
+        await addUser(user)
+      }
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['users'] }),
   })

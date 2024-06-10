@@ -66,9 +66,13 @@ function Nav() {
               )}
             </IfAuthenticated>
             <IfNotAuthenticated>
+              <p className="text-2xl">Please sign in to load your data.</p>
               <button className="btn-clear" onClick={handleSignIn}>
                 Sign in
               </button>
+              <Link to="/guest">
+                <button className="btn-clear">Try as guest</button>
+              </Link>
             </IfNotAuthenticated>
           </div>
         </div>

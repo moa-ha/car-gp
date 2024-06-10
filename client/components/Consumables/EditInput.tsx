@@ -13,6 +13,7 @@ function EditInput({ data }: { data: Consumable }) {
     replaced: data.replaced,
     due: data.due,
     km: data.km,
+    user: data.user,
   })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
