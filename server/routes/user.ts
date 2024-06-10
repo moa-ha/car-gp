@@ -1,7 +1,4 @@
 import { Router } from 'express'
-import checkJwt, { JwtRequest } from '../auth0.ts'
-import { StatusCodes } from 'http-status-codes'
-
 import * as db from '../db/users.ts'
 
 const router = Router()
@@ -18,12 +15,10 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { id, nickname } = req.body
-  if (!id || !nickname) {
-    return res.status(400).send('Invalid user data')
-  }
 
   try {
-    await db.addUsers({ id, nickname })
+    await db.newUser({ id, nickname })
+    await db.defaultConsumables(id)
     res.status(201).send('User added')
   } catch (error) {
     console.error(error)
