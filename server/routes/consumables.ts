@@ -7,7 +7,7 @@ import * as db from '../db/consumables.ts'
 const router = Router()
 
 router.get('/', async (req: JwtRequest, res) => {
-  const user = req.auth ? req.auth.sub : 'default'
+  const user = req.auth ? req.auth.sub : undefined
 
   try {
     const consumables = await db.getConsumablesByUser(String(user))
