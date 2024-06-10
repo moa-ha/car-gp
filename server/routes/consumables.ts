@@ -30,7 +30,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-//adding is working with this
 router.post('/', async (req, res, next) => {
   const data = req.body
   try {

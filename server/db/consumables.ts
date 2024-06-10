@@ -8,7 +8,7 @@ export async function getConsumablesByUser(id: string): Promise<Consumable[]> {
 export async function getConsumableById(id: number) {
   return await db('consumables').where({ id }).first()
 }
-// adding is working with this
+
 export async function addConsumable(data: ConsumableData) {
   await db('consumables').insert(data)
 }

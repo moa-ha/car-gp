@@ -27,10 +27,6 @@ function Nav() {
     return logout()
   }
 
-  const handleSignIn = () => {
-    console.log('sign in')
-    return loginWithRedirect()
-  }
   return (
     <>
       <nav className="p-4">
@@ -66,9 +62,10 @@ function Nav() {
               )}
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <button className="btn-clear" onClick={handleSignIn}>
-                Sign in
-              </button>
+              <p className="text-2xl">Please sign in to load your data.</p>
+              <Link to="/consumables/guest">
+                <button className="btn-clear">Try as guest</button>
+              </Link>
             </IfNotAuthenticated>
           </div>
         </div>
