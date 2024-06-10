@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import checkJwt, { JwtRequest } from '../auth0.ts'
+import { JwtRequest } from '../auth0.ts'
 import { StatusCodes } from 'http-status-codes'
 
 import * as db from '../db/consumables.ts'
@@ -7,8 +7,6 @@ import * as db from '../db/consumables.ts'
 const router = Router()
 
 router.get('/', async (req, res) => {
-  console.log(Object.keys(req))
-
   const user = req.auth ? req.auth.sub : 'default'
 
   try {
@@ -64,8 +62,6 @@ router.get('/:id', async (req, res, next) => {
 //adding is working with this
 router.post('/', async (req, res, next) => {
   const data = req.body
-  console.log(Object.keys(req))
-
   try {
     await db.addConsumable(data)
     res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
