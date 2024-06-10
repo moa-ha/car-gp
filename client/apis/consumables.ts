@@ -76,10 +76,6 @@ export async function editConsumable({
     .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
 }
-// export async function deleteConsumable(id: number) {
-//   const url = `${rootUrl}/${id}`
-//   return await request.delete(url)
-// }
 
 //L EAVE IT FOR FUTURE REFERENCE
 // const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
