@@ -8,10 +8,6 @@ export async function getUsers(): Promise<User[]> {
   return res.body as User[]
 }
 
-// export async function addUser(user: User) {
-//   await request.post(rootUrl).send(user)
-// }
-
 export async function addUser(user: User) {
   const defaultData = [
     {
@@ -48,4 +44,9 @@ export async function addUser(user: User) {
 
   await request.post(rootUrl).send(user)
   await request.post('/api/v1/consumables').send(defaultData)
+}
+
+export async function getUserById(id: string) {
+  const res = await request.get(`${rootUrl}/${id}`)
+  return res.body as User[]
 }
