@@ -3,7 +3,7 @@
 // make it available to get user's average mileage per year and calculate accordingly
 
 import { useState } from 'react'
-import { useConsumables } from '../../hooks/useConsumables'
+import { useGetConsumableById } from '../../hooks/useConsumables'
 import React from 'react'
 import NextSchedule from '../NextSchedule'
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 function DateInput({ id }: Props) {
-  const { data } = useConsumables()
+  const { data } = useGetConsumableById(id)
   const [date, setDate] = useState('')
   const [result, setResult] = useState('')
 
@@ -30,24 +30,11 @@ function DateInput({ id }: Props) {
   // NZ average mileage per year is 15000.
   const days = 365
   const average = 15000
-  let km
-  let index
+  const km = Number(data?.km)
+  const period = Math.floor(Number((km / average) * days))
   const dateObject = new Date(date)
 
-  function getPeriod(id: number) {
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].id == id) {
-          km = Number(data[i].km)
-          index = i
-          return Math.floor(Number((km / average) * days))
-        }
-      }
-    }
-  }
-
   // calculate each accordingly and make it dd/mm/yyyy
-  const period = Number(getPeriod(id))
   const milSecPeriod = period * 24 * 60 * 60 * 1000
   const receivedDate = Number(dateObject.getTime())
   const returnedDate = new Date(receivedDate + milSecPeriod)
@@ -67,7 +54,9 @@ function DateInput({ id }: Props) {
         <NextSchedule id={id} replaced={date} result={result} />
         {/* <button className="btn-clear mt-2">Check the upcoming schedule!</button> */}
         check it on
-        <span className="returned-date"> {result}</span>
+        <span className="returned-date">
+          {data && data?.due !== '' ? data.due : result}
+        </span>
       </form>
     </div>
   )
