@@ -19,7 +19,9 @@ function DateInput({ id }: Props) {
   useEffect(() => {
     if (data) {
       setReplaced(String(data.replaced))
-      setDue(String(data.due))
+
+      // TODO: it returns null when it's empty.
+      setDue(data.due || '')
     }
   }, [data])
 
