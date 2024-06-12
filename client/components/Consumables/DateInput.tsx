@@ -2,7 +2,7 @@
 // stretch: notice or alarm
 // make it available to get user's average mileage per year and calculate accordingly
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetConsumableById } from '../../hooks/useConsumables'
 import React from 'react'
 import NextSchedule from '../NextSchedule'
@@ -15,6 +15,12 @@ function DateInput({ id }: Props) {
   const { data } = useGetConsumableById(id)
   const [date, setDate] = useState('')
   const [result, setResult] = useState('')
+
+  useEffect(() => {
+    if (data) {
+      setDate(String(data.replaced))
+    }
+  }, [data])
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setDate(event.target.value)
@@ -52,10 +58,9 @@ function DateInput({ id }: Props) {
           value={date}
         />
         <NextSchedule id={id} replaced={date} result={result} />
-        {/* <button className="btn-clear mt-2">Check the upcoming schedule!</button> */}
         check it on
         <span className="returned-date">
-          {data && data?.due !== '' ? data.due : result}
+          {data && data.due !== '' ? data.due : result}
         </span>
       </form>
     </div>
