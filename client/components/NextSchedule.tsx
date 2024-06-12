@@ -3,9 +3,9 @@ import { useEdit, useGetConsumableById } from '../hooks/useConsumables'
 interface SaveSchedule {
   id: number
   replaced: string
-  result: string
+  due: string
 }
-function NextSchedule({ id, replaced, result }: SaveSchedule) {
+function NextSchedule({ id, replaced, due }: SaveSchedule) {
   const { data } = useGetConsumableById(id)
   const mutation = useEdit()
 
@@ -14,7 +14,7 @@ function NextSchedule({ id, replaced, result }: SaveSchedule) {
       id: id,
       name: String(data?.name),
       replaced: replaced,
-      due: result,
+      due: due,
       km: Number(data?.km),
       user: String(data?.user),
     })

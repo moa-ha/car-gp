@@ -13,24 +13,25 @@ interface Props {
 
 function DateInput({ id }: Props) {
   const { data } = useGetConsumableById(id)
-  const [date, setDate] = useState('')
-  const [result, setResult] = useState('')
+  const [replaced, setReplaced] = useState('')
+  const [due, setDue] = useState('')
 
   useEffect(() => {
     if (data) {
-      setDate(String(data.replaced))
+      setReplaced(String(data.replaced))
+      setDue(String(data.due))
     }
   }, [data])
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setDate(event.target.value)
+    setReplaced(event.target.value)
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    console.log('result: ' + formattedDate)
+    console.log('due: ' + formattedDate)
 
-    setResult(formattedDate)
+    setDue(formattedDate)
   }
 
   // NZ average mileage per year is 15000.
@@ -38,7 +39,7 @@ function DateInput({ id }: Props) {
   const average = 15000
   const km = Number(data?.km)
   const period = Math.floor(Number((km / average) * days))
-  const dateObject = new Date(date)
+  const dateObject = new Date(replaced)
 
   // calculate each accordingly and make it dd/mm/yyyy
   const milSecPeriod = period * 24 * 60 * 60 * 1000
@@ -55,13 +56,11 @@ function DateInput({ id }: Props) {
           onChange={handleChange}
           type="date"
           name="replaced"
-          value={date}
+          value={replaced}
         />
-        <NextSchedule id={id} replaced={date} result={result} />
+        <NextSchedule id={id} replaced={replaced} due={due} />
         check it on
-        <span className="returned-date">
-          {data && data.due !== '' ? data.due : result}
-        </span>
+        <span className="returned-date">{due}</span>
       </form>
     </div>
   )
