@@ -20,9 +20,13 @@ function NextSchedule({ id, replaced, due }: SaveSchedule) {
     })
   }
   return (
-    <button className="btn-clear mt-2" onClick={handleClick}>
-      Check the upcoming schedule!
-    </button>
+    <div>
+      check it on...
+      <span className="returned-date">{due ? due : ''}</span>
+      <button className="btn-clear mt-2" onClick={handleClick}>
+        Save
+      </button>
+    </div>
   )
 }
 

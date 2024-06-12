@@ -29,9 +29,8 @@ function DateInput({ id }: Props) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    console.log('due: ' + formattedDate)
-
     setDue(formattedDate)
+    console.log('due: ' + formattedDate)
   }
 
   // NZ average mileage per year is 15000.
@@ -58,9 +57,8 @@ function DateInput({ id }: Props) {
           name="replaced"
           value={replaced}
         />
+        <button className="btn-clear mt-2">Check the upcoming schedule!</button>
         <NextSchedule id={id} replaced={replaced} due={due} />
-        check it on
-        <span className="returned-date">{due}</span>
       </form>
     </div>
   )
