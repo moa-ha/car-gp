@@ -64,7 +64,7 @@ function DateInput({ id }: Props) {
           name="replaced"
           value={date}
         />
-        <NextSchedule id={id} result={result} />
+        <NextSchedule id={id} replaced={date} result={result} />
         {/* <button className="btn-clear mt-2">Check the upcoming schedule!</button> */}
         check it on
         <span className="returned-date"> {result}</span>
