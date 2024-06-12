@@ -5,6 +5,7 @@
 import { useState } from 'react'
 import { useConsumables } from '../../hooks/useConsumables'
 import React from 'react'
+import NextSchedule from '../NextSchedule'
 
 interface Props {
   id: number
@@ -29,7 +30,8 @@ function DateInput({ id }: Props) {
   // NZ average mileage per year is 15000.
   const days = 365
   const average = 15000
-  let km = 0
+  let km
+  let index
   const dateObject = new Date(date)
 
   function getPeriod(id: number) {
@@ -37,6 +39,7 @@ function DateInput({ id }: Props) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == id) {
           km = Number(data[i].km)
+          index = i
           return Math.floor(Number((km / average) * days))
         }
       }
@@ -58,11 +61,11 @@ function DateInput({ id }: Props) {
           className="text-black"
           onChange={handleChange}
           type="date"
-          name="date"
-          id="datePicker"
+          name="replaced"
           value={date}
         />
-        <button className="btn-clear mt-2">Check the upcoming schedule!</button>
+        <NextSchedule id={id} result={result} />
+        {/* <button className="btn-clear mt-2">Check the upcoming schedule!</button> */}
         check it on
         <span className="returned-date"> {result}</span>
       </form>
