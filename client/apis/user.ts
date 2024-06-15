@@ -8,8 +8,24 @@ export async function getUsers(): Promise<User[]> {
   return res.body as User[]
 }
 
-export async function addUser(user: User) {
-  const defaultData = [
+// user was truthy even though it caught error, so returned null when error to run useNewUser hook
+export async function getUserById(id: string): Promise<User | null> {
+  try {
+    const res = await request.get(`${rootUrl}/${id}`)
+    return res.body as User
+  } catch (error) {
+    console.error('Unexpected error:', error)
+    return null // Return null if user not found
+  }
+}
+
+export async function newUser(user: User) {
+  const defaultMaintenance = [
+    {
+      user: user.id,
+    },
+  ]
+  const defaultConsumables = [
     {
       name: 'Engine Oil',
       km: 10000,
@@ -43,10 +59,6 @@ export async function addUser(user: User) {
   ]
 
   await request.post(rootUrl).send(user)
-  await request.post('/api/v1/consumables').send(defaultData)
-}
-
-export async function getUserById(id: string) {
-  const res = await request.get(`${rootUrl}/${id}`)
-  return res.body as User[]
+  await request.post('/api/v1/maintenance').send(defaultMaintenance)
+  await request.post('/api/v1/consumables').send(defaultConsumables)
 }
