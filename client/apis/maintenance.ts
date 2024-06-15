@@ -1,11 +1,18 @@
 import request from 'superagent'
-import { MaintenanceUser, Wof } from '../../models/maintenance'
+import { Maintenance, Wof } from '../../models/maintenance'
 
 const rootUrl = '/api/v1/maintenance'
 
-export async function getMaintenance() {
-  const res = await request.get(rootUrl)
-  return res.body as MaintenanceUser
+export async function getMaintenance(token: string): Promise<Maintenance[]> {
+  try {
+    const res = await request
+      .get(rootUrl)
+      .set('Authorization', `Bearer ${token}`)
+
+    return res.body as Maintenance[]
+  } catch (error) {
+    throw new Error(`Failed to fetch consumables: ${error}`)
+  }
 }
 
 interface UpdateWof {
