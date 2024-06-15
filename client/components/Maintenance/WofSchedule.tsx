@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import CarYear from './CarYear'
+import { calculate } from '../function'
 
 function WofSchedule() {
   const [date, setDate] = useState('')
-  const [isShow, setIsShow] = useState(false)
+  const [old, setOld] = useState(false)
 
   function handleClick() {
-    setIsShow(!isShow)
+    setOld(!old)
   }
   let due
 
@@ -15,7 +16,12 @@ function WofSchedule() {
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    due = date + 365
+    if (old) {
+      due = calculate(date, 182)
+    } else {
+      due = calculate(date, 365)
+    }
+    console.log(due)
   }
 
   return (
@@ -25,7 +31,7 @@ function WofSchedule() {
         <br></br>
         Check if your car was registered before 1 January 2000.
         <input type="checkbox" onClick={handleClick}></input>
-        {isShow && <CarYear />}
+        {old && <CarYear />}
         <input
           className="text-black"
           onChange={handleChange}

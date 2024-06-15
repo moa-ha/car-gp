@@ -5,3 +5,13 @@ export function stringDate(date) {
   const formattedDate = `${year}-${month}-${day}`
   return formattedDate
 }
+
+// calculate each accordingly and make it dd/mm/yyyy
+export function calculate(date, period) {
+  const milSecPeriod = period * 24 * 60 * 60 * 1000
+  const dateObject = new Date(date)
+  const receivedDate = Number(dateObject.getTime())
+  const returnedDate = new Date(receivedDate + milSecPeriod)
+  const formattedDate = returnedDate.toLocaleDateString('en-GB')
+  return formattedDate
+}
