@@ -3,13 +3,13 @@ import { Maintenance, Wof } from '../../models/maintenance'
 
 const rootUrl = '/api/v1/maintenance'
 
-export async function getMaintenance(token: string): Promise<Maintenance[]> {
+export async function getMaintenance(token: string): Promise<Maintenance> {
   try {
     const res = await request
       .get(rootUrl)
       .set('Authorization', `Bearer ${token}`)
 
-    return res.body as Maintenance[]
+    return res.body
   } catch (error) {
     throw new Error(`Failed to fetch consumables: ${error}`)
   }

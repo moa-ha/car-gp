@@ -34,8 +34,6 @@ export function useNewUser(): UseMutationResult<void, Error, User, unknown> {
       const existingUser = await getUserById(user.id)
       if (!existingUser) {
         await newUser(user)
-      } else {
-        console.log('existing user: ' + user.id)
       }
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['users'] }),
