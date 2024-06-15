@@ -15,10 +15,6 @@ export interface Rego {
   regoDue: string
 }
 
-export interface MaintenanceUser extends MaintenanceData {
-  user: string
-}
-
 export interface Maintenance extends MaintenanceData {
-  id: number
+  user: string
 }
