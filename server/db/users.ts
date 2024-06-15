@@ -5,8 +5,8 @@ export async function getUsers(): Promise<User[]> {
   return db('users')
 }
 
-export async function getUserById(id: string): Promise<User> {
-  return db('users').where({ id }).first()
+export async function getUserById(id: string): Promise<User | null> {
+  return db('users').where({ id }).first() || null
 }
 
 export async function newUser(user: User) {
