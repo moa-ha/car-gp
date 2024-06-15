@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import CarYear from './CarYear'
 import { calculate } from '../function'
+import { Maintenance } from '../../../models/maintenance'
 
-function WofSchedule() {
-  const [date, setDate] = useState('')
+function WofSchedule({ data }: { data: Maintenance }) {
+  const [date, setDate] = useState(data.wof)
   const [old, setOld] = useState(false)
 
   function handleClick() {
