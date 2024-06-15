@@ -13,7 +13,7 @@ server.use(express.json())
 
 server.use('/api/v1/consumables', checkJwt, consumables)
 server.use('/api/v1/maintenance', checkJwt, maintenance)
-server.use('/api/v1/user', checkJwt, user)
+server.use('/api/v1/user', user)
 
 server.use('/api/v1/guest', guest)
 
