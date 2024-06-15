@@ -1,4 +1,4 @@
-import { useEdit, useGetConsumableById } from '../hooks/useConsumables'
+import { useEdit, useGetConsumableById } from '../../hooks/useConsumables'
 
 interface SaveSchedule {
   id: number
