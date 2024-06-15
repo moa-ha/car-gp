@@ -2,12 +2,14 @@ import { Router } from 'express'
 
 import * as db from '../db/maintenance.ts'
 import { StatusCodes } from 'http-status-codes'
+import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/', async (req: JwtRequest, res) => {
+  const id = String(req.auth?.sub)
   try {
-    const maintenance = await db.getMaintenance()
+    const maintenance = await db.getMaintenance(id)
     res.json(maintenance)
   } catch (error) {
     console.log(error)
