@@ -3,14 +3,19 @@ import CarYear from './CarYear'
 
 function WofSchedule() {
   const [date, setDate] = useState('')
-  let result
+  const [isShow, setIsShow] = useState(false)
+
+  function handleClick() {
+    setIsShow(!isShow)
+  }
+  let due
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setDate(e.target.value)
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    result = date + 365
+    due = date + 365
   }
 
   return (
@@ -19,7 +24,8 @@ function WofSchedule() {
         <label htmlFor="datePicker"> Your latest Wof was </label>
         <br></br>
         Check if your car was registered before 1 January 2000.
-        <CarYear />
+        <input type="checkbox" onClick={handleClick}></input>
+        {isShow && <CarYear />}
         <input
           className="text-black"
           onChange={handleChange}
@@ -31,7 +37,7 @@ function WofSchedule() {
         <button className="btn-clear">save</button>
         <p>
           Due:
-          <span className="returned-date"> {result}</span>❕
+          <span className="returned-date"> {due}</span>❕
         </p>
       </form>
     </div>
