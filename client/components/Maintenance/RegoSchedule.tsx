@@ -1,6 +1,6 @@
-import { MouseEvent, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import { useMaintenance } from '../../hooks/useMaintenance'
-import { Maintenance } from '../../../models/maintenance'
+import { MaintenanceData } from '../../../models/maintenance'
 import SaveRego from './SaveRego'
 import { stringDate } from '../function'
 // TODO: separate wof vs rego
@@ -13,7 +13,7 @@ function RegoSchedule() {
     wofDue: data?.wofDue,
     rego: data?.rego,
     regoDue: data?.regoDue,
-  } as Maintenance)
+  } as MaintenanceData)
   const [registered, setRegistered] = useState({})
   const [duration, setDuration] = useState(0)
   const [due, setDue] = useState('')
