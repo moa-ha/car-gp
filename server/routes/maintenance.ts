@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import * as db from '../db/maintenance.ts'
+import { StatusCodes } from 'http-status-codes'
 
 const router = Router()
 
@@ -17,10 +18,11 @@ router.get('/', async (req, res) => {
 router.patch('/', async (req, res) => {
   const data = req.body
   try {
-    await db.updateDue(data)
+    await db.updateWof(data)
+    res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
   } catch (e) {
     console.log(e)
-    res.status(500).json({ message: "Couldn't update due dates" })
+    res.status(500).json({ message: "Couldn't update wof due dates" })
   }
 })
 
