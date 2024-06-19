@@ -5,6 +5,16 @@ export interface MaintenanceData {
   regoDue: string
 }
 
-export interface MaintenanceUser extends MaintenanceData {
+export interface Wof {
+  wof: string
+  wofDue: string
+}
+
+export interface Rego {
+  rego: string
+  regoDue: string
+}
+
+export interface Maintenance extends MaintenanceData {
   user: string
 }

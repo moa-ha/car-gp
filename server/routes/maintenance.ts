@@ -1,12 +1,15 @@
 import { Router } from 'express'
 
 import * as db from '../db/maintenance.ts'
+import { StatusCodes } from 'http-status-codes'
+import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/', async (req: JwtRequest, res) => {
+  const id = String(req.auth?.sub)
   try {
-    const maintenance = await db.getMaintenance()
+    const maintenance = await db.getMaintenance(id)
     res.json(maintenance)
   } catch (error) {
     console.log(error)
@@ -14,13 +17,16 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.patch('/', async (req, res) => {
+router.patch('/', async (req: JwtRequest, res) => {
+  const id = String(req.auth?.sub)
   const data = req.body
+
   try {
-    await db.updateDue(data)
+    await db.updateWof(id, data)
+    res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
   } catch (e) {
     console.log(e)
-    res.status(500).json({ message: "Couldn't update due dates" })
+    res.status(500).json({ message: "Couldn't update wof due dates" })
   }
 })
 

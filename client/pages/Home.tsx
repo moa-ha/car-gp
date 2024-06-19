@@ -10,11 +10,11 @@ import {
 } from '../components/Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useRef, useEffect } from 'react'
-import { useAddUser } from '../hooks/useUsers'
+import { useNewUser } from '../hooks/useUsers'
 
 function Home() {
   const { user, logout, loginWithRedirect, isAuthenticated } = useAuth0()
-  const mutation = useAddUser()
+  const mutation = useNewUser()
   const hasRunEffect = useRef(false)
 
   useEffect(() => {

@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react'
 import { useGetConsumableById } from '../../hooks/useConsumables'
 import React from 'react'
-import NextSchedule from '../NextSchedule'
+import NextSchedule from './NextSchedule'
 
 interface Props {
   id: number

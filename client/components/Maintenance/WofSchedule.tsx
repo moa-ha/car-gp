@@ -1,16 +1,39 @@
 import React, { useState } from 'react'
 import CarYear from './CarYear'
+import { calculate } from '../function'
+import { Maintenance } from '../../../models/maintenance'
+import { useUpdateWof } from '../../hooks/useMaintenance'
 
-function WofSchedule() {
-  const [date, setDate] = useState('')
-  let result
+function WofSchedule({ data }: { data: Maintenance }) {
+  const [date, setDate] = useState(data.wof)
+  const [old, setOld] = useState(false)
+  const [wof, setWof] = useState({
+    user: data.user,
+    wof: data.wof,
+    wofDue: data.wofDue,
+  })
+
+  const mutation = useUpdateWof()
+  function handleClick() {
+    setOld(!old)
+  }
+  let due: string
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setDate(e.target.value)
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    result = date + 365
+    if (old) {
+      due = calculate(date, 182)
+    } else {
+      due = calculate(date, 365)
+    }
+    setWof({ user: data.user, wof: date, wofDue: due })
+  }
+
+  function handleSave() {
+    mutation.mutate(wof)
   }
 
   return (
@@ -19,7 +42,8 @@ function WofSchedule() {
         <label htmlFor="datePicker"> Your latest Wof was </label>
         <br></br>
         Check if your car was registered before 1 January 2000.
-        <CarYear />
+        <input type="checkbox" onClick={handleClick}></input>
+        {old && <CarYear />}
         <input
           className="text-black"
           onChange={handleChange}
@@ -28,12 +52,15 @@ function WofSchedule() {
           id="datePicker"
           value={date}
         />
-        <button className="btn-clear">save</button>
+        <button className="btn-clear">Check the next schedule</button>
         <p>
           Due:
-          <span className="returned-date"> {result}</span>❕
+          <span className="returned-date"> {wof.wofDue}</span>❕
         </p>
       </form>
+      <button className="btn-clear" onClick={handleSave}>
+        Save
+      </button>
     </div>
   )
 }

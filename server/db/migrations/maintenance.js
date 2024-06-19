@@ -5,12 +5,11 @@
 
 export async function up(knex) {
   return knex.schema.createTable('maintenance', (table) => {
-    table.increments('id').primary()
+    table.string('user').primary().references('users.id')
     table.date('wof')
     table.date('wofDue')
     table.date('rego')
     table.date('regoDue')
-    table.string('user').references('users.id')
   })
 }
 

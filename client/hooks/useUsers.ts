@@ -4,8 +4,9 @@ import {
   UseMutationResult,
   useQuery,
 } from '@tanstack/react-query'
-import { addUser, getUserById, getUsers } from '../apis/user'
+import { getUserById, getUsers, newUser } from '../apis/user'
 import { User } from '../../models/user'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export function useUsers() {
   return useQuery({
@@ -14,14 +15,25 @@ export function useUsers() {
   })
 }
 
-export function useAddUser(): UseMutationResult<void, Error, User, unknown> {
+export function useUserById() {
+  const { user } = useAuth0()
+  return useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      const id = String(user?.sub)
+      return getUserById(id)
+    },
+  })
+}
+
+export function useNewUser(): UseMutationResult<void, Error, User, unknown> {
   const client = useQueryClient()
 
   return useMutation({
     mutationFn: async (user: User) => {
-      const existingUser = getUserById(user.id)
+      const existingUser = await getUserById(user.id)
       if (!existingUser) {
-        await addUser(user)
+        await newUser(user)
       }
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['users'] }),

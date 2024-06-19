@@ -4,12 +4,12 @@ import logo from '../styles/images/logo-4.png'
 
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
-import { useAddUser } from '../hooks/useUsers.ts'
+import { useNewUser } from '../hooks/useUsers.ts'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
   const { user, logout, loginWithRedirect, isAuthenticated } = useAuth0()
-  const mutation = useAddUser()
+  const mutation = useNewUser()
   const hasRunEffect = useRef(false)
 
   useEffect(() => {

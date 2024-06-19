@@ -1,18 +1,10 @@
 import db from './connection'
-import { Maintenance } from '../../models/maintenance'
+import { Wof } from '../../models/maintenance'
 
-export async function getMaintenance() {
-  return await db('maintenance')
+export async function getMaintenance(id: string) {
+  return await db('maintenance').where('user', id).first()
 }
 
-// export async function updateDue(data: Maintenance) {
-//   await db('maintenance').insert(data)
-// }
-
-interface Wof {
-  Wof: string
-  WofDue: string
-}
-export async function updateWofDue(data: Wof) {
-  await db('maintenance').insert(data)
+export async function updateWof(id: string, data: Wof) {
+  await db('maintenance').where('user', id).update(data)
 }

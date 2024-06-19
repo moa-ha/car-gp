@@ -14,23 +14,28 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  const id = req.params
+  const id = String(req.params.id)
   try {
-    const user = await db.getUserById(String(id))
+    const user = await db.getUserById(id)
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' })
+      return null
+    }
     res.json(user)
   } catch (error) {
+    console.log('error fetching user', error)
     res.status(500).json({ message: "Couldn't get the user" })
   }
 })
 
 router.post('/', async (req, res) => {
   const { id, nickname } = req.body
-
   const userExists = await db.getUserById(id)
+
   if (!userExists) {
     try {
       await db.newUser({ id, nickname })
-      await db.defaultConsumables(id)
       res.status(201).send('User added')
     } catch (error) {
       console.error(error)
