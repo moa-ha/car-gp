@@ -29,7 +29,6 @@ function WofSchedule({ data }: { data: Maintenance }) {
     } else {
       due = calculate(date, 365)
     }
-    console.log(due)
     setWof({ user: data.user, wof: date, wofDue: due })
   }
 
@@ -51,7 +50,7 @@ function WofSchedule({ data }: { data: Maintenance }) {
           type="date"
           name="date"
           id="datePicker"
-          value={data.wof}
+          value={date}
         />
         <button className="btn-clear">Check the next schedule</button>
         <p>
