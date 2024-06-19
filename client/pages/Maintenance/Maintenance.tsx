@@ -4,6 +4,7 @@ import { useMaintenance } from '../../hooks/useMaintenance'
 
 function Maintenance() {
   const { data } = useMaintenance()
+
   if (data) {
     return (
       <div className="flex flex-col gap-4 p-4">
