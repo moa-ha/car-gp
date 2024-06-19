@@ -20,8 +20,6 @@ router.get('/', async (req: JwtRequest, res) => {
 router.patch('/', async (req: JwtRequest, res) => {
   const id = String(req.auth?.sub)
   const data = req.body
-  console.log('id: ' + id)
-  console.log('data: ' + data)
 
   try {
     await db.updateWof(id, data)
