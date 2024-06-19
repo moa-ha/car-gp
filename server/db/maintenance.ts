@@ -6,5 +6,5 @@ export async function getMaintenance(id: string) {
 }
 
 export async function updateWof(id: string, data: Wof) {
-  await db('maintenance').where('user', id).insert(data)
+  await db('maintenance').where('user', id).update(data)
 }
