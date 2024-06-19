@@ -17,10 +17,11 @@ router.get('/', async (req: JwtRequest, res) => {
   }
 })
 
-router.patch('/', async (req, res) => {
+router.patch('/', async (req: JwtRequest, res) => {
+  const id = String(req.auth?.sub)
   const data = req.body
   try {
-    await db.updateWof(data)
+    await db.updateWof(id, data)
     res.setHeader('Location', req.baseUrl).sendStatus(StatusCodes.CREATED)
   } catch (e) {
     console.log(e)
