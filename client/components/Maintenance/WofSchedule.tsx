@@ -34,6 +34,7 @@ function WofSchedule({ data }: { data: Maintenance }) {
 
   function handleSave() {
     mutation.mutate(wof)
+    alert('Successfully saved')
   }
 
   return (

@@ -18,6 +18,7 @@ function NextSchedule({ id, replaced, due }: SaveSchedule) {
       km: Number(data?.km),
       user: String(data?.user),
     })
+    alert('Successfully saved')
   }
   return (
     <div>
