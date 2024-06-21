@@ -16,7 +16,7 @@ function Edit() {
   if (data && data.id == id) {
     return (
       <div className="bg-opacity p-4">
-        {data.name}
+        <span className="text-2xl font-bold">{data.name}</span>
         <EditInput data={data} />
       </div>
     )
