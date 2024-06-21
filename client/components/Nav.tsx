@@ -30,7 +30,7 @@ function Nav() {
   }
   return (
     <>
-      <nav className="p-4">
+      <nav className="nav p-4">
         <div className="flex justify-between">
           <div className="flex items-end space-x-4 text-2xl">
             <Link to="/">
