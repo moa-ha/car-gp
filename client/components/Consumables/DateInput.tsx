@@ -31,7 +31,6 @@ function DateInput({ id }: Props) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setDue(formattedDate)
-    console.log('due: ' + formattedDate)
   }
 
   // NZ average mileage per year is 15000.
