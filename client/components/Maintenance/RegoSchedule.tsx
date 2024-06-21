@@ -1,8 +1,7 @@
-import { MouseEvent, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import { Maintenance } from '../../../models/maintenance'
 import { stringDate } from '../function'
 import { useUpdateRego } from '../../hooks/useMaintenance'
-// TODO: separate wof vs rego
 
 function RegoSchedule({ data }: { data: Maintenance }) {
   const [rego, setRego] = useState({
@@ -21,15 +20,13 @@ function RegoSchedule({ data }: { data: Maintenance }) {
   }
 
   // get how many months registered
-  const handleMonthClick = (
-    event: MouseEvent<HTMLButtonElement, MouseEvent>,
-    month: SetStateAction<number>,
-  ) => {
+  const handleMonthClick = (event: React.MouseEvent, month: number) => {
     event.preventDefault()
     setDuration(month)
   }
 
   // return added date
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function addMonths(date: { setMonth?: any; getMonth?: any }, months: number) {
     date.setMonth(date.getMonth() + months)
     const returned = stringDate(date)
@@ -65,7 +62,9 @@ function RegoSchedule({ data }: { data: Maintenance }) {
             <button
               key={month}
               className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 p-1 hover:bg-sky-700' : 'mr-1 w-8 border p-1 hover:bg-sky-700'}`}
-              onClick={(event) => handleMonthClick(event, month)}
+              onClick={(event: React.MouseEvent) =>
+                handleMonthClick(event, month)
+              }
             >
               {month}
             </button>
