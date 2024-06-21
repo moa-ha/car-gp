@@ -44,8 +44,9 @@ function WofSchedule({ data }: { data: Maintenance }) {
         Check if your car was registered before 1 January 2000.
         <input type="checkbox" onClick={handleClick}></input>
         {old && <CarYear />}
+        <br></br>
         <input
-          className="text-black"
+          className="m-2 rounded border border-gray-300 px-4 py-2"
           onChange={handleChange}
           type="date"
           name="date"
