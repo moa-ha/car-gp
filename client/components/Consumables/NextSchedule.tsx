@@ -20,15 +20,20 @@ function NextSchedule({ id, replaced, due }: SaveSchedule) {
     })
     alert('Successfully saved')
   }
-  return (
-    <div>
-      check it on...
-      <span className="returned-date">{due}</span>
-      <button className="btn-clear mt-2" onClick={handleClick}>
-        Save
-      </button>
-    </div>
-  )
+
+  if (due) {
+    return (
+      <div>
+        check it on <span className="returned-date">{due}</span>
+        <button className="btn-clear mt-2" onClick={handleClick}>
+          Save
+        </button>
+      </div>
+    )
+  } else {
+    // eslint-disable-next-line react/no-unescaped-entities
+    return <div>This item's replacement hasn't been saved</div>
+  }
 }
 
 export default NextSchedule
