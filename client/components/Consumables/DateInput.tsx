@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { useGetConsumableById } from '../../hooks/useConsumables'
 import React from 'react'
 import NextSchedule from './NextSchedule'
+import { calculate } from '../function'
 
 interface Props {
   id: number
@@ -19,8 +20,6 @@ function DateInput({ id }: Props) {
   useEffect(() => {
     if (data) {
       setReplaced(String(data.replaced))
-
-      // TODO: it returns null when it's empty.
       setDue(data.due || '')
     }
   }, [data])
@@ -42,11 +41,7 @@ function DateInput({ id }: Props) {
   const period = Math.floor(Number((km / average) * days))
   const dateObject = new Date(replaced)
 
-  // calculate each accordingly and make it dd/mm/yyyy
-  const milSecPeriod = period * 24 * 60 * 60 * 1000
-  const receivedDate = Number(dateObject.getTime())
-  const returnedDate = new Date(receivedDate + milSecPeriod)
-  const formattedDate = returnedDate.toLocaleDateString('en-GB')
+  const formattedDate = calculate(dateObject, period)
 
   return (
     <div className="relative flex gap-4">
