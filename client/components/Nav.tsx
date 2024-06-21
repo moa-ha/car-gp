@@ -7,7 +7,6 @@ import { useEffect, useRef } from 'react'
 import { useNewUser } from '../hooks/useUsers.ts'
 
 function Nav() {
-  // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
   const { user, logout, loginWithRedirect, isAuthenticated } = useAuth0()
   const mutation = useNewUser()
   const hasRunEffect = useRef(false)
@@ -23,12 +22,10 @@ function Nav() {
   }, [isAuthenticated, user, mutation])
 
   const handleSignOut = () => {
-    console.log('sign out')
     return logout()
   }
 
   const handleSignIn = () => {
-    console.log('sign in')
     return loginWithRedirect()
   }
   return (
