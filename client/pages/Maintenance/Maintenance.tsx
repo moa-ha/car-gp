@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Rego from '../../components/Maintenance/Rego'
 import RegoSchedule from '../../components/Maintenance/RegoSchedule'
 import WofSchedule from '../../components/Maintenance/WofSchedule'
 import { useMaintenance } from '../../hooks/useMaintenance'
