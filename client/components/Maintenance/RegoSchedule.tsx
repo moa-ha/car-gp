@@ -1,49 +1,50 @@
-import { useState } from 'react'
-import { useMaintenance } from '../../hooks/useMaintenance'
-import { MaintenanceData } from '../../../models/maintenance'
-import SaveRego from './SaveRego'
+import { MouseEvent, SetStateAction, useState } from 'react'
+import { Maintenance } from '../../../models/maintenance'
 import { stringDate } from '../function'
+import { useUpdateRego } from '../../hooks/useMaintenance'
 // TODO: separate wof vs rego
 
-function RegoSchedule() {
-  const { data } = useMaintenance()
-
-  const [formState, setFormState] = useState({
-    wof: data?.wof,
-    wofDue: data?.wofDue,
-    rego: data?.rego,
-    regoDue: data?.regoDue,
-  } as MaintenanceData)
-  const [registered, setRegistered] = useState({})
+function RegoSchedule({ data }: { data: Maintenance }) {
+  const [rego, setRego] = useState({
+    user: data.user,
+    rego: data.rego,
+    regoDue: data.regoDue,
+  })
   const [duration, setDuration] = useState(0)
-  const [due, setDue] = useState('')
+
+  const mutation = useUpdateRego()
 
   // get the registered date - update the data and convert date into obj
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.currentTarget
-    setFormState((prev) => ({ ...prev, [name]: value }))
-    setRegistered(new Date(value))
+    const { value } = e.currentTarget
+    setRego((prev) => ({ ...prev, rego: value }))
   }
 
   // get how many months registered
-  const handleMonthClick = (event, month) => {
+  const handleMonthClick = (
+    event: MouseEvent<HTMLButtonElement, MouseEvent>,
+    month: SetStateAction<number>,
+  ) => {
     event.preventDefault()
     setDuration(month)
   }
 
   // return added date
-  function addMonths(date, months) {
+  function addMonths(date: { setMonth?: any; getMonth?: any }, months: number) {
     date.setMonth(date.getMonth() + months)
     const returned = stringDate(date)
-    setDue(returned)
+    setRego((prev) => ({ ...prev, regoDue: returned }))
   }
 
   // return the added date using registered date + duration
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    addMonths(registered, duration)
+    addMonths(new Date(rego.rego), duration)
   }
 
+  function handleSave() {
+    mutation.mutate(rego)
+  }
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (
     <>
@@ -54,7 +55,7 @@ function RegoSchedule() {
             className="m-2 rounded border border-gray-300 px-4 py-2"
             onChange={handleChange}
             type="date"
-            value={formState.rego}
+            value={rego.rego}
             name="rego"
           />
 
@@ -72,12 +73,14 @@ function RegoSchedule() {
             Check the due
           </button>
         </form>
-        {due && (
+        {rego.regoDue && (
           <>
-            <p className="text-base ">Renew before {due}</p>
-            <SaveRego due={due} />
+            <p className="text-base ">Renew before {rego.regoDue}</p>
           </>
         )}
+        <button className="btn-clear" onClick={handleSave}>
+          Save
+        </button>
         {/* TODO: make push alarm */}
         {/* <p className="text-base">Send notice ~~ before</p> */}
       </div>

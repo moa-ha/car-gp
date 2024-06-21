@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Maintenance, Wof } from '../../models/maintenance'
+import { Maintenance, Rego, Wof } from '../../models/maintenance'
 
 const rootUrl = '/api/v1/maintenance'
 
@@ -23,6 +23,18 @@ export async function updateWof({ wof, token }: UpdateWof): Promise<void> {
   return await request
     .patch(rootUrl)
     .send(wof)
+    .set('Authorization', `Bearer ${token}`)
+    .then((res) => res.body)
+}
+
+interface UpdateRego {
+  rego: Rego
+  token: string
+}
+export async function updateRego({ rego, token }: UpdateRego): Promise<void> {
+  return await request
+    .patch(rootUrl)
+    .send(rego)
     .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
 }
