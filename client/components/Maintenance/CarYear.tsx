@@ -3,7 +3,7 @@
 function CarYear() {
   return (
     <>
-      <div className="p-4">
+      <div className="p-2">
         <p className="underline">We'll send you notice in 6 months.</p>
         <p className=" text-sm italic">
           You need to get a Warrant of Fitness check: Once a year if your
