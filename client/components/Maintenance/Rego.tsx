@@ -6,6 +6,7 @@ function Rego() {
     <>
       <div className="relative text-2xl">
         Rego
+        <RegoSchedule />
         <p className="text-base">
           <Link
             to="https://transact.nzta.govt.nz/transactions/renewvehiclelicence/entry"
@@ -26,7 +27,6 @@ function Rego() {
           </Link>
           : Check when your registration due
         </p>
-        <RegoSchedule />
       </div>
     </>
   )
