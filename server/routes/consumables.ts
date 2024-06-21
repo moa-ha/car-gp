@@ -45,9 +45,7 @@ router.delete('/:id', async (req: JwtRequest, res, next) => {
   const id = Number(req.params.id)
   try {
     await db.deleteConsumable(id)
-    res
-      .setHeader('Location', `${req.baseUrl}/${id}`)
-      .sendStatus(StatusCodes.CREATED)
+    res.sendStatus(StatusCodes.NO_CONTENT)
   } catch (err) {
     res.status(500).json({ message: 'It is not deleted. Try again' })
     next(err)
@@ -60,8 +58,8 @@ router.patch('/:id', async (req, res, next) => {
   try {
     await db.editConsumable(id, data)
     res
-      .setHeader('Location', `${req.baseUrl}/${id}`)
-      .sendStatus(StatusCodes.CREATED)
+      .status(StatusCodes.OK)
+      .json({ message: 'Item detail is updated successfully' })
   } catch (e) {
     res.status(500).json({ message: 'Failed to update' })
     next(e)
