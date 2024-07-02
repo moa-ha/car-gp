@@ -8,11 +8,7 @@ export function stringDate(date) {
 
 // calculate period by each user's average mpy
 export function period(km, averageKm) {
-  if (averageKm) {
-    return Math.floor(Number((km / averageKm) * 365))
-  } else {
-    return Math.floor(Number((km / 15000) * 365))
-  }
+  return Math.floor(Number((km / averageKm) * 365))
 }
 
 // calculate each accordingly and make it dd/mm/yyyy
