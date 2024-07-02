@@ -15,7 +15,6 @@ interface Props {
 function DateInput({ id }: Props) {
   const { data } = useGetConsumableById(id)
   const { data: maintenance } = useMaintenance()
-  console.log(maintenance)
 
   const [replaced, setReplaced] = useState('')
   const [due, setDue] = useState('')
