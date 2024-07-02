@@ -7,10 +7,15 @@ import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import SearchBar from '../../components/Consumables/SearchBar'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useMaintenance } from '../../hooks/useMaintenance'
+import { period, calculate } from '../../components/function'
 
 function Add() {
+  const mutation = useAddConsumable()
   const navigate = useNavigate()
   const { user } = useAuth0()
+  const { data: maintenance } = useMaintenance()
+
   const [formState, setFormState] = useState({
     name: '',
     replaced: '',
@@ -18,20 +23,30 @@ function Add() {
     km: 0,
     user: user?.sub,
   })
-  const mutation = useAddConsumable()
+  const [calculatedPeriod, setCalculatedPeriod] = useState(0)
 
-  // TODO: make the due calculation
+  const averageKm = maintenance?.averageKm
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
     const info = { ...formState, [name]: value }
     setFormState(info)
   }
 
+  function handlePeriod(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = Number(e.currentTarget.value)
+    setFormState((prev) => ({ ...prev, km: value }))
+    setCalculatedPeriod(period(value, averageKm))
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    mutation.mutate(formState)
+
+    const formattedDate = calculate(formState.replaced, calculatedPeriod)
+    const updatedFormState = { ...formState, due: formattedDate }
+    mutation.mutate(updatedFormState)
+
     navigate('/consumables')
-    // window.location.reload()
   }
   return (
     <>
@@ -61,7 +76,7 @@ function Add() {
           How many miles can you drive with this?<br></br>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2"
-            onChange={handleChange}
+            onChange={handlePeriod}
             type="number"
             value={formState.km}
             name="km"
