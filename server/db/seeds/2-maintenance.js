@@ -7,6 +7,7 @@ export async function seed(knex) {
       wofDue: '03/03/2025',
       rego: '04/04/2024',
       regoDue: '04/10/2024',
+      averageKm: 15000,
     },
   ])
 }
