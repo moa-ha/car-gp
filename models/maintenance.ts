@@ -3,6 +3,7 @@ export interface MaintenanceData {
   wofDue: string
   rego: string
   regoDue: string
+  averageKm: number
 }
 
 export interface Wof {

@@ -6,6 +6,11 @@ export function stringDate(date) {
   return formattedDate
 }
 
+// calculate period by each user's average mpy
+export function period(km, averageKm) {
+  return Math.floor(Number((km / averageKm) * 365))
+}
+
 // calculate each accordingly and make it dd/mm/yyyy
 export function calculate(date, period) {
   const milSecPeriod = period * 24 * 60 * 60 * 1000

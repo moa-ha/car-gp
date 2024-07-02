@@ -19,6 +19,7 @@ export async function newUser(user: User) {
       wofDue: '',
       rego: '',
       regoDue: '',
+      averageKm: 15000,
     },
   ]
 
