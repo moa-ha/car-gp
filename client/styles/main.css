@@ -50,6 +50,6 @@ body {
   z-index: 2; /* Ensures the text is above the list items */
 }
 
-.returned-date::after {
+/* .returned-date::after {
   content: '❕';
-}
+} */
