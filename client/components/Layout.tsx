@@ -4,8 +4,8 @@ import Nav from './Nav'
 export default function Layout() {
   return (
     <div className="bg-bg-img h-full">
+      <Nav />
       <main>
-        <Nav />
         <Outlet />
       </main>
       <footer></footer>

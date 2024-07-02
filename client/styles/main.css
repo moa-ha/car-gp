@@ -10,6 +10,9 @@ html,
 body {
   height: 100%;
 }
+main {
+  padding-top: 150px;
+}
 
 .bg-bg-img {
   background-image: url('/client/styles/images/bg-1.jpeg');
@@ -52,4 +55,10 @@ body {
 
 /* .returned-date::after {
   content: '❕';
-} */
+}*/
+
+.nav {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
