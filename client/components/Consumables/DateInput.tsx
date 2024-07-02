@@ -6,14 +6,17 @@ import { useEffect, useState } from 'react'
 import { useGetConsumableById } from '../../hooks/useConsumables'
 import React from 'react'
 import NextSchedule from './NextSchedule'
-import { calculate } from '../function'
-
+import { period, calculate } from '../function'
+import { useMaintenance } from '../../hooks/useMaintenance'
 interface Props {
   id: number
 }
 
 function DateInput({ id }: Props) {
   const { data } = useGetConsumableById(id)
+  const { data: maintenance } = useMaintenance()
+  console.log(maintenance)
+
   const [replaced, setReplaced] = useState('')
   const [due, setDue] = useState('')
 
@@ -33,14 +36,13 @@ function DateInput({ id }: Props) {
     setDue(formattedDate)
   }
 
-  // NZ average mileage per year is 15000.
-  const days = 365
-  const average = 15000
+  // get how many days available for the item
+  const averageKm = maintenance?.averageKm
   const km = Number(data?.km)
-  const period = Math.floor(Number((km / average) * days))
-  const dateObject = new Date(replaced)
+  const calculatedPeriod = period(km, averageKm)
 
-  const formattedDate = calculate(dateObject, period)
+  // date to string for Model
+  const formattedDate = calculate(replaced, calculatedPeriod)
 
   return (
     <div className="relative flex gap-4">
