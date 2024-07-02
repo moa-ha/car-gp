@@ -24,9 +24,7 @@ function EditInput({ data }: { data: Consumable }) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     mutation.mutate(formState)
-
     navigate('/consumables')
-    window.location.reload()
   }
 
   return (
