@@ -2,10 +2,13 @@ import { useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
 import { useEdit } from '../../hooks/useConsumables'
 import { Consumable } from '../../../models/consumable'
+import { useMaintenance } from '../../hooks/useMaintenance'
+import { period, calculate } from '../function'
 
 function EditInput({ data }: { data: Consumable }) {
   const mutation = useEdit()
   const navigate = useNavigate()
+  const { data: maintenance } = useMaintenance()
 
   const [formState, setFormState] = useState({
     id: data.id,
@@ -15,18 +18,32 @@ function EditInput({ data }: { data: Consumable }) {
     km: data.km,
     user: data.user,
   })
+  const [calculatedPeriod, setCalculatedPeriod] = useState(
+    period(data.km, maintenance?.averageKm),
+  )
+
+  const averageKm = maintenance?.averageKm
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
+  // NOTE: separate handle change and useState for another step between change and submit.
+  function handlePeriod(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = Number(e.currentTarget.value)
+    setFormState((prev) => ({ ...prev, km: value }))
+    setCalculatedPeriod(period(value, averageKm))
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    mutation.mutate(formState)
+
+    const formattedDate = calculate(formState.replaced, calculatedPeriod)
+    const updatedFormState = { ...formState, due: formattedDate }
+    mutation.mutate(updatedFormState)
 
     navigate('/consumables')
-    window.location.reload()
   }
 
   return (
@@ -60,7 +77,7 @@ function EditInput({ data }: { data: Consumable }) {
           far can you drive with this item?<br></br>
           <input
             className="text-base"
-            onChange={handleChange}
+            onChange={handlePeriod}
             type="number"
             value={formState.km}
             name="km"
@@ -68,7 +85,6 @@ function EditInput({ data }: { data: Consumable }) {
           />
           km
         </div>
-
         <button type="submit" className="btn-clear relative mt-4">
           save
         </button>

@@ -10,6 +10,7 @@ export async function up(knex) {
     table.date('wofDue')
     table.date('rego')
     table.date('regoDue')
+    table.integer('averageKm')
   })
 }
 
