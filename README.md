@@ -1,6 +1,5 @@
 # Car-GP
-## Live: https://car-gp.vercel.app/
-#### It is deployed with mvp and still under construction for additional features and styling
+## ---UNDER CONSTRUCTION ---
 
 <b>App to record car's status.</b><br>
 
