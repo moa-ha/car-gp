@@ -34,7 +34,12 @@
     "jwks-rsa": "^3.1.0",
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",
-    "superagent": "^8.1.2"
+    "superagent": "^8.1.2",
+    "next": "^13.0.0",
+    "react": "^18.0.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
+    "sass": "^1.50.1"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
@@ -65,10 +70,6 @@
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
-    "react": "^18.0.2",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2",
-    "sass": "^1.50.1",
     "supertest": "^6.3.4",
     "tailwindcss": "^3.4.3",
     "tsx": "^3.12.7",
