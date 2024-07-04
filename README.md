@@ -1,5 +1,5 @@
 # Car-GP
-## ---under construction---- ##
+## ---UNDER CONSTRUCTION ---
 
 <b>App to record car's status.</b><br>
 
