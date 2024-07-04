@@ -11,6 +11,7 @@
     "test": "vitest",
     "start": "node dist/server.js",
     "dev": "run-p dev:client dev:server",
+     "server": "nodemon dist/server.js",
     "dev:client": "vite",
     "dev:server": "tsx watch server/index.ts",
     "build": "run-s build:client build:server",
