@@ -15,7 +15,8 @@ server.use('/api/v1/consumables', checkJwt, consumables)
 server.use('/api/v1/maintenance', checkJwt, maintenance)
 server.use('/api/v1/user', user)
 
-server.use('/api/v1/guest', guest)
+// server.use('/api/v1/guest', guest)
+server.use('/guest', guest)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
