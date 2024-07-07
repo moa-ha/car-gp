@@ -42,10 +42,14 @@ export default {
   },
 
   production: {
-    client: 'sqlite3',
+    client: 'pg',
     useNullAsDefault: true,
-    connection: {
-      filename: '/app/storage/prod.sqlite3',
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: './db/migrations',
+    },
+    seeds: {
+      directory: './db/seeds',
     },
     pool: {
       min: 2,
