@@ -2,7 +2,6 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-
 export async function up(knex) {
   return knex.schema.createTable('consumables', (table) => {
     table.increments('id').primary()
@@ -10,7 +9,7 @@ export async function up(knex) {
     table.date('replaced')
     table.date('due')
     table.integer('km')
-    table.string('user').references('users.id')
+    table.string('user').references('id').inTable('users')
   })
 }
 
@@ -18,7 +17,6 @@ export async function up(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-
 export async function down(knex) {
   return knex.schema.dropTable('consumables')
 }
