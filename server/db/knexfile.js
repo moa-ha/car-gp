@@ -6,44 +6,13 @@ const __dirname = Path.dirname(__filename)
 
 export default {
   development: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      host: process.env.POSTGRES_HOST,
-      database: process.env.POSTGRES_DATABASE,
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      ssl: {
-        rejectUnauthorized: false,
-      },
+      filename: Path.join(__dirname, 'dev.sqlite3'),
     },
     pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      directory: './db/migrations',
-    },
-    seeds: {
-      directory: './db/seeds',
-    },
-  },
-  production: {
-    client: 'postgresql',
-    connection: {
-      connectionString: process.env.POSTGRES_URL,
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      directory: './db/migrations',
-    },
-    seeds: {
-      directory: './db/seeds',
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
@@ -64,14 +33,14 @@ export default {
     },
   },
 
-  // production: {
-  //   client: 'sqlite3',
-  //   useNullAsDefault: true,
-  //   connection: {
-  //     filename: '/app/storage/prod.sqlite3',
-  //   },
-  //   pool: {
-  //     afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
-  //   },
-  // },
+  production: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: '/app/storage/prod.sqlite3',
+    },
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+    },
+  },
 }
