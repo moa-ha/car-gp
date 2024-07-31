@@ -22,14 +22,12 @@ export default {
     function ({ addComponents }) {
       addComponents({
         '.btn-clear': {
-          border: '1px solid #6699CC',
-          color: '#FFFFFF',
-          // color: '#6699CC',
+          border: '1px solid #003366',
           padding: '0 .5rem',
           margin: '0 .2em',
           transition: 'all 0.3s ease', // smooth transition
           '&:hover': {
-            boxShadow: '0 4px 8px rgba(255, 255, 255, 0.2)', // add shadow on hover
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // add shadow on hover
             transform: 'translateY(-2px)', // slight lift on hover
           },
         },
