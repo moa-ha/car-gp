@@ -32,7 +32,7 @@ function NextSchedule({ id, replaced, due }: SaveSchedule) {
     )
   } else {
     // eslint-disable-next-line react/no-unescaped-entities
-    return <div>This item's replacement hasn't been saved</div>
+    return <div>Select the date and check schedule</div>
   }
 }
 
