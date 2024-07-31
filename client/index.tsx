@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
       clientId="yB7tbCqQhhviWfqGb4EBbGN7x41XZJg1"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        // audience: 'https://car-gp/api',
-        audience:
-          process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3000/api'
-            : 'https://car-gp.vercel.app/api',
+        audience: 'https://car-gp/api',
+        // audience:
+        //   process.env.NODE_ENV === 'development'
+        //     ? 'http://localhost:3000/api'
+        //     : 'https://car-gp.vercel.app/api',
       }}
     >
       <QueryClientProvider client={queryClient}>
