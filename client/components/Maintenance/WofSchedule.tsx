@@ -47,7 +47,7 @@ function WofSchedule({ data }: { data: Maintenance }) {
         {old && <CarYear />}
         <br></br>
         <input
-          className="m-2 rounded border border-gray-300 px-4 py-2"
+          className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
           onChange={handleChange}
           type="date"
           name="date"

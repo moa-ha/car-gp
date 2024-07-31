@@ -55,7 +55,7 @@ function Add() {
         <div className="p-4">
           Which item do you want to get notice for?<br></br>
           <input
-            className="m-2 rounded border border-gray-300 px-4 py-2"
+            className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handleChange}
             type="text"
             value={formState.name}
@@ -65,7 +65,7 @@ function Add() {
         <div className="p-4">
           When was it replaced?<br></br>
           <input
-            className="m-2 rounded border border-gray-300 px-4 py-2"
+            className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handleChange}
             type="date"
             value={formState.replaced}
@@ -75,7 +75,7 @@ function Add() {
         <div className="p-4">
           How many miles can you drive with this?<br></br>
           <input
-            className="m-2 rounded border border-gray-300 px-4 py-2"
+            className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handlePeriod}
             type="number"
             value={formState.km}

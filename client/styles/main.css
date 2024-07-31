@@ -15,7 +15,9 @@ main {
 }
 
 .bg-bg-img {
-  background-image: url('/client/styles/images/bg-1.jpeg');
+  /* background-image: url('/client/styles/images/bg-1.jpeg'); */
+  background-color: #003366;
+  /* color: white; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -61,4 +63,5 @@ main {
   position: fixed;
   z-index: 1000;
   width: 100%;
+  background-color: #1e4877;
 }
