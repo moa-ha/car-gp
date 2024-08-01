@@ -52,8 +52,8 @@ function Add() {
     <div className="p-4">
       <form onSubmit={handleSubmit}>
         <button className="btn-clear">Save</button>
-        <div className="p-4">
-          Which item do you want to get notice for?<br></br>
+        <div className="pt-4">
+          What item?<br></br>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handleChange}
@@ -62,7 +62,7 @@ function Add() {
             name="name"
           />
         </div>
-        <div className="p-4">
+        <div>
           When was it replaced?<br></br>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
@@ -72,8 +72,8 @@ function Add() {
             name="replaced"
           />
         </div>
-        <div className="p-4">
-          How many miles can you drive with this?<br></br>
+        <div>
+          How many kms can you drive with this?<br></br>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handlePeriod}
@@ -83,7 +83,7 @@ function Add() {
           />
         </div>
       </form>
-      <div className=" p-4">
+      <div>
         Search if you don't know
         <SearchBar />
       </div>
