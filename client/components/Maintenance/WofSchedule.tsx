@@ -38,16 +38,17 @@ function WofSchedule({ data }: { data: Maintenance }) {
   }
 
   return (
-    <div className="relative">
+    <div className="relative mt-4">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="datePicker"> Your latest Wof was </label>
-        <br></br>
-        Check if your car was registered before 1 January 2000.
+        <span className="underline">
+          Check if your car was registered before 1 January 2000.
+        </span>
         <input type="checkbox" onClick={handleClick}></input>
         {old && <CarYear />}
         <br></br>
+        <label htmlFor="datePicker">Put your latest WoF ▶︎</label>
         <input
-          className="m-2 rounded border border-gray-300 px-4 py-2"
+          className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
           onChange={handleChange}
           type="date"
           name="date"

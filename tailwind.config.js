@@ -22,8 +22,7 @@ export default {
     function ({ addComponents }) {
       addComponents({
         '.btn-clear': {
-          border: '1px solid black',
-          color: '#000000',
+          border: '1px solid #003366',
           padding: '0 .5rem',
           margin: '0 .2em',
           transition: 'all 0.3s ease', // smooth transition

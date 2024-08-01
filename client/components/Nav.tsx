@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
-import logo from '../styles/images/logo-4.png'
+import logo from '../styles/images/logo_color.png'
 
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
@@ -50,25 +50,28 @@ function Nav() {
             </Link>
           </div>
 
-          <div>
+          <div className="flex flex-col items-end">
             <IfAuthenticated>
-              <button className="btn-clear" onClick={handleSignOut}>
+              <button
+                className="btn-clear border-white"
+                onClick={handleSignOut}
+              >
                 Sign out
               </button>
               {user && (
                 <p className="text-sm">
-                  Signed in as:
+                  Signed in as:{' '}
                   <span className="font-semibold">{user.nickname}</span>
                 </p>
               )}
             </IfAuthenticated>
             <IfNotAuthenticated>
               <p className="text-2xl">Please sign in to load your data.</p>
-              <button className="btn-clear" onClick={handleSignIn}>
+              <button className="btn-clear border-white" onClick={handleSignIn}>
                 Sign in
               </button>
               <Link to="/guest">
-                <button className="btn-clear">Try as guest</button>
+                <button className="btn-clear border-white">Try as guest</button>
               </Link>
             </IfNotAuthenticated>
           </div>

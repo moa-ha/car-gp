@@ -47,21 +47,21 @@ function RegoSchedule({ data }: { data: Maintenance }) {
   return (
     <>
       <div className="p-4 text-base">
-        When was it replaced?
+        When was it renewed?
         <form onSubmit={handleSubmit}>
           <input
-            className="m-2 rounded border border-gray-300 px-4 py-2"
+            className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handleChange}
             type="date"
             value={rego.rego}
             name="rego"
           />
 
-          <p className="text-lg">How many months have you registered?</p>
+          <p className="text-lg">How many months did you register for?</p>
           {months.map((month) => (
             <button
               key={month}
-              className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 p-1 hover:bg-sky-700' : 'mr-1 w-8 border p-1 hover:bg-sky-700'}`}
+              className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 bg-white p-1 hover:bg-sky-700' : 'mr-1 w-8 border bg-white p-1 hover:bg-sky-700'}`}
               onClick={(event: React.MouseEvent) =>
                 handleMonthClick(event, month)
               }
@@ -74,9 +74,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
           </button>
         </form>
         {rego.regoDue && (
-          <>
-            <p className="text-base ">Renew before {rego.regoDue}</p>
-          </>
+          <p className="text-base ">Renew before {rego.regoDue}</p>
         )}
         <button className="btn-clear" onClick={handleSave}>
           Save

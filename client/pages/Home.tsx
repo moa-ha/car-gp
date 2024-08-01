@@ -1,5 +1,5 @@
 import name from '../styles/images/logo-5.png'
-import logo from '../styles/images/logo-4.png'
+import logo from '../styles/images/logo_color.png'
 import maintenance from '../styles/images/maintenance.png'
 import consumables from '../styles/images/consumables.png'
 import { Link } from 'react-router-dom'
@@ -38,7 +38,7 @@ function Home() {
   }
 
   return (
-    <div className="bg-bg-img h-full p-10">
+    <div className="h-full p-10">
       <div>
         <IfAuthenticated>
           <button className="btn-clear" onClick={handleSignOut}>
@@ -46,7 +46,7 @@ function Home() {
           </button>
           {user && (
             <p className="text-sm">
-              Signed in as:
+              Signed in as:{' '}
               <span className="font-semibold">{user.nickname}</span>
             </p>
           )}

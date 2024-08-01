@@ -13,10 +13,10 @@ function Maintenance() {
           <div className="relative text-2xl">WoF</div>
           <span className="relative">
             A warrant of fitness (WoF) or certificate of fitness inspection is a
-            regular check to make sure your vehicle is safe.
+            regular check to make sure your vehicle is safe. Enter when your
+            latest Wof was done and get notification for your next scheduled
+            Wof!
           </span>
-          Enter when your latest Wof was done and get notification for your next
-          scheduled Wof!
           <WofSchedule data={data} />
         </div>
 

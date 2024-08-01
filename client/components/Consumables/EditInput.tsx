@@ -52,7 +52,7 @@ function EditInput({ data }: { data: Consumable }) {
         <div className="relative pt-4 text-xl underline">
           You can call it whatever you want.<br></br>
           <input
-            className="text-base"
+            className="text-black"
             onChange={handleChange}
             type="text"
             value={formState.name}
@@ -64,7 +64,7 @@ function EditInput({ data }: { data: Consumable }) {
         <div className="relative pt-4 text-xl underline">
           When was it replaced?<br></br>
           <input
-            className="text-base"
+            className="text-black"
             onChange={handleChange}
             type="date"
             value={formState.replaced}
@@ -76,7 +76,7 @@ function EditInput({ data }: { data: Consumable }) {
           You can normally drive {data.km}km but we know it depends cars! How
           far can you drive with this item?<br></br>
           <input
-            className="text-base"
+            className="text-black"
             onChange={handlePeriod}
             type="number"
             value={formState.km}
