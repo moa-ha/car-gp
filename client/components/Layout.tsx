@@ -3,7 +3,7 @@ import Nav from './Nav'
 
 export default function Layout() {
   return (
-    <div className="h-full">
+    <div>
       <Nav />
       <main>
         <Outlet />

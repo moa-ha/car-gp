@@ -49,7 +49,7 @@ function Add() {
     navigate('/consumables')
   }
   return (
-    <>
+    <div className="p-4">
       <form onSubmit={handleSubmit}>
         <button className="btn-clear">Save</button>
         <div className="p-4">
@@ -87,7 +87,7 @@ function Add() {
         Search if you don't know
         <SearchBar />
       </div>
-    </>
+    </div>
   )
 }
 
