@@ -3,7 +3,7 @@ import Nav from './Nav'
 
 export default function Layout() {
   return (
-    <div className="bg-bg-img h-full">
+    <div className="h-full">
       <Nav />
       <main>
         <Outlet />

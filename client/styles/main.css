@@ -9,20 +9,10 @@
 html,
 body {
   height: 100%;
+  background-color: #f2f2f2;
 }
 main {
   padding-top: 150px;
-}
-
-.bg-bg-img {
-  /* background-image: url('/client/styles/images/bg-1.jpeg'); */
-  /* background-color: #003366; */
-  /* color: white; */
-  background-color: #f2f2f2;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh; /* Ensures the div covers at least the viewport height */
 }
 
 /* styles.css */

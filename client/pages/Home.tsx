@@ -38,7 +38,7 @@ function Home() {
   }
 
   return (
-    <div className="bg-bg-img h-full p-10">
+    <div className="h-full p-10">
       <div>
         <IfAuthenticated>
           <button className="btn-clear" onClick={handleSignOut}>
