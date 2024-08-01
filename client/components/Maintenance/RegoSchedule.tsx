@@ -47,7 +47,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
   return (
     <>
       <div className="p-4 text-base">
-        When was it replaced?
+        When was it renewed?
         <form onSubmit={handleSubmit}>
           <input
             className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
@@ -57,7 +57,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
             name="rego"
           />
 
-          <p className="text-lg">How many months have you registered?</p>
+          <p className="text-lg">How many months did you register for?</p>
           {months.map((month) => (
             <button
               key={month}
@@ -74,9 +74,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
           </button>
         </form>
         {rego.regoDue && (
-          <>
-            <p className="text-base ">Renew before {rego.regoDue}</p>
-          </>
+          <p className="text-base ">Renew before {rego.regoDue}</p>
         )}
         <button className="btn-clear" onClick={handleSave}>
           Save
