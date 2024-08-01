@@ -46,7 +46,7 @@ function Home() {
           </button>
           {user && (
             <p className="text-sm">
-              Signed in as:
+              Signed in as:{' '}
               <span className="font-semibold">{user.nickname}</span>
             </p>
           )}
