@@ -11,19 +11,12 @@ const queryClient = new QueryClient()
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    /**
-     * TODO: replace domain, clientId, and audience
-     */
     <Auth0Provider
       domain="harakeke-2024-moa.au.auth0.com"
       clientId="yB7tbCqQhhviWfqGb4EBbGN7x41XZJg1"
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: 'https://car-gp/api',
-        // audience:
-        //   process.env.NODE_ENV === 'development'
-        //     ? 'http://localhost:3000/api'
-        //     : 'https://car-gp.vercel.app/api',
       }}
     >
       <QueryClientProvider client={queryClient}>
