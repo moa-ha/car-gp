@@ -5,7 +5,7 @@ config({ path: '.env' })
 
 export default defineConfig({
   schema: './src/db/schema.ts',
-  out: './migrations',
+  out: './src//migrations',
   dialect: 'sqlite',
   driver: 'turso',
   dbCredentials: {
