@@ -6,6 +6,7 @@ import { User } from '../../../models/user'
 export async function getUsers(): Promise<User[]> {
   return db.select().from(users)
 }
+
 export async function getUserById(id: string) {
   await db.select().from(users).where(eq(users.id, id))
 }
