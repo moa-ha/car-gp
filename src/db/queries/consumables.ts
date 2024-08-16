@@ -4,6 +4,8 @@ import { consumables } from '../schema'
 import { ConsumableData } from '../../../models/consumable'
 
 export async function getConsumablesByUser(id: string) {
+  console.log('using turso db')
+
   return db.select().from(consumables).where(eq(consumables.user, id))
 }
 
