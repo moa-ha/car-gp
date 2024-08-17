@@ -33,8 +33,6 @@ export async function getMaintenance(id: string): Promise<Maintenance> {
 }
 
 export async function updateWof(id: string, data: Wof) {
-  console.log('updating wof on drizzle')
-
   await db.update(maintenance).set(data).where(eq(maintenance.user, id))
 }
 
