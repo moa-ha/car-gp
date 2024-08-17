@@ -80,8 +80,12 @@ export async function getUsers(): Promise<User[]> {
   return db.select().from(users)
 }
 
-export async function getUserById(id: string) {
-  await db.select().from(users).where(eq(users.id, id))
+export async function getUserById(id: string): Promise<User> {
+  const data = (await db
+    .select()
+    .from(users)
+    .where(eq(users.id, id))) as Array<User>
+  return data[0]
 }
 
 export async function newUser(user: User) {

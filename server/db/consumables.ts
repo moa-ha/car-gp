@@ -24,7 +24,11 @@
 import { eq } from 'drizzle-orm'
 import { db } from '../../src/db/index'
 import { consumables } from '../../src/db/schema'
-import { ConsumableData } from '../../models/consumable'
+import {
+  Consumable,
+  ConsumableData,
+  ConsumableUser,
+} from '../../models/consumable'
 
 export async function getConsumablesByUser(id: string) {
   console.log('using turso db')
@@ -32,13 +36,20 @@ export async function getConsumablesByUser(id: string) {
   return db.select().from(consumables).where(eq(consumables.user, id))
 }
 
-export async function getConsumableById(id: number) {
-  return db.select().from(consumables).where(eq(consumables.id, id))
+export async function getConsumableById(id: number): Promise<Consumable> {
+  const data = (await db
+    .select()
+    .from(consumables)
+    .where(eq(consumables.id, id))) as Array<Consumable>
+  return data[0]
 }
 
-export async function addConsumable(id: string, data: ConsumableData) {
-  await db.insert(consumables).values({ ...data, user: id })
+export async function addConsumable(data: ConsumableUser) {
+  await db.insert(consumables).values(data)
 }
+// export async function addConsumable(id: string, data: ConsumableData) {
+//   await db.insert(consumables).values({ ...data, user: id })
+// }
 
 export async function deleteConsumable(id: number) {
   await db.delete(consumables).where(eq(consumables.id, id))
