@@ -4,6 +4,7 @@ import { Router } from 'express'
 import { getConsumablesForGuest } from '../db/guest'
 const router = Router()
 
+// GET /guest
 router.get('/', async (req, res) => {
   try {
     const consumables = await getConsumablesForGuest('default')
