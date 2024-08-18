@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/server.ts",
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "/server/server.ts"
+    },
+    {
+      "src": "/guest/(.*)",
+      "dest": "/server/server.ts"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/server/server.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server/server.ts"
+    }
+  ]
+}
