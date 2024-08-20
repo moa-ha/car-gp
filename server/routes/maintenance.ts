@@ -3,7 +3,6 @@ import { Router } from 'express'
 import * as db from '../db/maintenance.ts'
 import { StatusCodes } from 'http-status-codes'
 import { JwtRequest } from '../auth0.ts'
-import { Jwt } from 'jsonwebtoken'
 
 const router = Router()
 
