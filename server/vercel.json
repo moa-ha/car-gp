@@ -9,22 +9,5 @@
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/api/v1/(.*)",
-      "dest": "/server/server.ts"
-    },
-    {
-      "src": "/api/v1/guest/(.*)",
-      "dest": "/server.ts"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/server/server.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/server/server.ts"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
 }
