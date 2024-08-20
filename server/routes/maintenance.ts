@@ -8,7 +8,7 @@ const router = Router()
 
 router.get('/', async (req: JwtRequest, res) => {
   const id = String(req.auth?.sub)
-  console.log(`Received request for maintenance data with user id: ${id}`)
+
   try {
     const maintenance = await db.getMaintenance(id)
     res.json(maintenance)
