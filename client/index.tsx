@@ -9,14 +9,14 @@ import { Auth0Provider } from '@auth0/auth0-react'
 const router = createBrowserRouter(routes)
 const queryClient = new QueryClient()
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN as string
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID as string
+// const domain = process.env.REACT_APP_AUTH0_DOMAIN as string
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID as string
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain="harakeke-2024-moa.au.auth0.com"
+      clientId="yB7tbCqQhhviWfqGb4EBbGN7x41XZJg1"
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: 'https://car-gp/api',
