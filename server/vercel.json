@@ -15,8 +15,8 @@
       "dest": "/server/server.ts"
     },
     {
-      "src": "/guest/(.*)",
-      "dest": "/server/server.ts"
+      "src": "/api/v1/guest/(.*)",
+      "dest": "/server.ts"
     },
     {
       "src": "/assets/(.*)",

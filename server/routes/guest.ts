@@ -7,8 +7,16 @@ const router = Router()
 // GET /guest
 router.get('/', async (req, res) => {
   try {
-    const consumables = await getConsumablesForGuest('default')
-    res.json(consumables)
+    res.json([
+      {
+        name: 'string',
+        replaced: 'string',
+        due: 'string',
+        km: 0,
+      },
+    ])
+    // const consumables = await getConsumablesForGuest('default')
+    // res.json(consumables)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })
