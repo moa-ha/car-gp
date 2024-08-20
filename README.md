@@ -9,31 +9,13 @@ This project is from my personal experience where I needed assistance with car's
 
 Provide useful information for car owners to remind when their car needs attention.
 
-## Setup
-
-### Installation and migrations
-
-- [ ] Clone the repository and cd into directory
-  ```
-  git clone git@github.com:moa-ha/car-gp.git
-  cd car-gp
-  ```  
-- [ ] Install packages, run migrations and seeds, and start the dev server with `npm run dev`
-
-  ```
-  npm install
-  npm run knex migrate:latest
-  npm run knex seed:run
-  npm run dev
-  ```
-
 ## Skill
 
 * HTML
 * CSS
 * JavaScript
 * React
-* Knex
+* Drizzle
 * SQLite3
 * JWT
 * ViTest
