@@ -17,7 +17,8 @@
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/index.js --bundle server/index.ts",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "eslintConfig": {
     "extends": "@devacademy/eslint-config/react",
@@ -36,6 +37,7 @@
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
+    "knex": "^3.1.0",
     "next": "^13.0.0",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
@@ -91,3 +93,4 @@
   },
   "browserslist": "> 2%, not dead"
 }
+
