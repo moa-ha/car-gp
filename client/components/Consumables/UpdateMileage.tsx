@@ -43,7 +43,7 @@ export default function UpdateMileage() {
               value={averageKm}
             />
             <button type="submit" className="btn-clear">
-              Update mileage
+              Update
             </button>
           </form>
         </p>
