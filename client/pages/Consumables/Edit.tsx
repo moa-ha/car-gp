@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import EditInput from '../../components/Consumables/EditInput'
 import { useGetConsumableById } from '../../hooks/useConsumables'
+import Loading from '../../components/Loading'
 
 function Edit() {
   const id = Number(useParams().id)
@@ -8,7 +9,7 @@ function Edit() {
   const { data, isLoading, isError, error } = useGetConsumableById(id)
 
   if (isLoading) {
-    return <>is loading</>
+    return <Loading />
   }
   if (isError) {
     return <>error: {error}</>

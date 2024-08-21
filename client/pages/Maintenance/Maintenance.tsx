@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import RegoSchedule from '../../components/Maintenance/RegoSchedule'
 import WofSchedule from '../../components/Maintenance/WofSchedule'
 import { useMaintenance } from '../../hooks/useMaintenance'
+import SignIn from '../../components/SignIn'
 
 function Maintenance() {
   const { data } = useMaintenance()
@@ -48,6 +49,8 @@ function Maintenance() {
         </div>
       </div>
     )
+  } else {
+    return <SignIn />
   }
 }
 
