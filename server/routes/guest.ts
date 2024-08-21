@@ -8,7 +8,7 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const consumables = await getConsumablesForGuest('default')
-    res.json(consumables)
+    return res.json(consumables)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })

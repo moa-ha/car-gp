@@ -3,6 +3,8 @@ import logo from '../styles/images/logo_color.png'
 import maintenance from '../styles/images/maintenance.png'
 import consumables from '../styles/images/consumables.png'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import {
   IfAuthenticated,
@@ -38,7 +40,7 @@ function Home() {
   }
 
   return (
-    <div className="h-full p-10">
+    <div className="h-full p-5">
       <div>
         <IfAuthenticated>
           <button className="btn-clear" onClick={handleSignOut}>
@@ -61,8 +63,19 @@ function Home() {
         <img src={logo} alt="home-logo" className="w-64" />
         <img src={name} alt="home-logo-text" className="w-80" />
       </div>
-      <div>
-        <ul className="flex justify-center gap-4">
+      <div className="grid justify-items-center">
+        <Link to="/guest">
+          <div
+            key="Consumables"
+            className="bg-opacity mb-4 w-96 p-4 text-center"
+          >
+            <span className="relative w-64 text-2xl">
+              <FontAwesomeIcon icon={faUser} /> Try as a Guest without Login
+            </span>
+          </div>
+        </Link>
+
+        <ul className="mb-4 flex gap-4">
           <Link to="/maintenance">
             <li key="Maintenance" className="bg-opacity p-4">
               <span className="relative text-2xl">Maintenance</span>
