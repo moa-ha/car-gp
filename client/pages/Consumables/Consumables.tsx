@@ -26,6 +26,10 @@ function Consumables() {
                   <Delete id={consumable.id} />
                   <br></br>
                   <span className="relative text-2xl">{consumable.name}</span>
+                  <span className="text-sm italic">
+                    {' '}
+                    Threshold; {consumable.km}km{' '}
+                  </span>
                   <DateInput id={consumable.id} />
                 </li>
               ))}

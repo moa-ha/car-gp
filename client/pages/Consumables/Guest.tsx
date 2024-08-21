@@ -45,7 +45,11 @@ function Date({ id }: Props) {
           value={replaced}
         />
         <button className="btn-clear mt-2">Check the upcoming schedule!</button>
-        <NextSchedule id={id} replaced={replaced} due={due} />
+        {due && (
+          <div>
+            check it on <span className="returned-date">{due}</span>
+          </div>
+        )}
       </form>
     </div>
   )
