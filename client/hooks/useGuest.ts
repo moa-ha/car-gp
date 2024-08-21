@@ -5,7 +5,7 @@ import * as api from '../apis/guest'
 
 export function useGuestConsumables() {
   return useQuery({
-    queryKey: ['consumables'],
+    queryKey: ['guestConsumable'],
     queryFn: () => api.guestConsumables(),
   })
 }
