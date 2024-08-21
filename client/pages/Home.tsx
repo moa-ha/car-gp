@@ -58,10 +58,18 @@ function Home() {
           <button className="btn-clear" onClick={handleSignIn}>
             Sign in
           </button>
+          <p className="text-sm">
+            Access with a Demo Account
+            <br />
+            <span className="font-semibold">
+              Email Address: test@gmail.com
+              <br /> Password: Test001!
+            </span>
+          </p>
         </IfNotAuthenticated>
       </div>
 
-      <div className="mb-20 flex flex-col items-center">
+      <div className="mb-10 flex flex-col items-center">
         <img src={logo} alt="home-logo" className="w-64" />
         <img src={name} alt="home-logo-text" className="w-80" />
       </div>
@@ -73,7 +81,7 @@ function Home() {
             className="bg-opacity mb-4 w-96 p-4 text-center"
           >
             <span className="relative w-64 text-2xl">
-              <FontAwesomeIcon icon={faSmile} /> Try as a Guest without Login
+              <FontAwesomeIcon icon={faSmile} /> Try as a Guest without sign in
             </span>
           </div>
         </Link>
@@ -82,7 +90,7 @@ function Home() {
           <Link to="/maintenance">
             <li key="Maintenance" className="bg-opacity p-4">
               <span className="relative text-2xl">Maintenance </span>
-              <span className="text-sm italic">Login is required</span>
+              <span className="text-sm italic">Sign in is required</span>
               <img
                 src={maintenance}
                 alt="maintenance"
@@ -94,7 +102,7 @@ function Home() {
           <Link to="/consumables">
             <li key="Consumables" className="bg-opacity p-4">
               <span className="relative text-2xl">Consumables </span>
-              <span className="text-sm italic">Login is required</span>
+              <span className="text-sm italic">Sign in is required</span>
               <img
                 src={consumables}
                 alt="consumables"
