@@ -3,13 +3,10 @@ import { useConsumables } from '../../hooks/useConsumables'
 import Delete from '../../components/Consumables/Delete'
 import DateInput from '../../components/Consumables/DateInput'
 import SignIn from '../../components/SignIn'
-import Loading from '../../components/Loading'
 
 function Consumables() {
-  const { data, isLoading } = useConsumables()
-  if (isLoading) {
-    return <Loading />
-  }
+  const { data } = useConsumables()
+
   if (data) {
     return (
       <div className="p-4">
