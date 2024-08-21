@@ -1,11 +1,3 @@
-// export interface MaintenanceData {
-//   wof: string
-//   wofDue: string
-//   rego: string
-//   regoDue: string
-//   averageKm: number
-// }
-
 export interface MaintenanceData {
   wof: string | null
   wofDue: string | null
@@ -20,8 +12,12 @@ export interface Wof {
 }
 
 export interface Rego {
-  rego: string
-  regoDue: string
+  rego: string | null
+  regoDue: string | null
+}
+
+export interface Km {
+  averageKm: number
 }
 
 export interface Maintenance extends MaintenanceData {

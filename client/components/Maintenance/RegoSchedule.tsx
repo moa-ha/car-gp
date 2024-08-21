@@ -5,7 +5,6 @@ import { useUpdateRego } from '../../hooks/useMaintenance'
 
 function RegoSchedule({ data }: { data: Maintenance }) {
   const [rego, setRego] = useState({
-    user: data.user,
     rego: data.rego,
     regoDue: data.regoDue,
   })
@@ -36,7 +35,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
   // return the added date using registered date + duration
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    addMonths(new Date(rego.rego), duration)
+    addMonths(new Date(String(rego.rego)), duration)
   }
 
   function handleSave() {
@@ -53,7 +52,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
             className="m-2 rounded border border-gray-300 px-4 py-2 text-black"
             onChange={handleChange}
             type="date"
-            value={rego.rego}
+            value={String(rego.rego)}
             name="rego"
           />
 
@@ -61,7 +60,7 @@ function RegoSchedule({ data }: { data: Maintenance }) {
           {months.map((month) => (
             <button
               key={month}
-              className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 bg-white p-1 hover:bg-sky-700' : 'mr-1 w-8 border bg-white p-1 hover:bg-sky-700'}`}
+              className={`${duration === month ? 'mr-1 w-8 border bg-sky-700 p-1 text-white' : 'mr-1 w-8 border bg-white p-1 hover:bg-sky-700 hover:text-white'}`}
               onClick={(event: React.MouseEvent) =>
                 handleMonthClick(event, month)
               }

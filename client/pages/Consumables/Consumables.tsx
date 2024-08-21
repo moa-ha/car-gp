@@ -3,6 +3,7 @@ import { useConsumables } from '../../hooks/useConsumables'
 import Delete from '../../components/Consumables/Delete'
 import DateInput from '../../components/Consumables/DateInput'
 import SignIn from '../../components/SignIn'
+import UpdateMileage from '../../components/Consumables/UpdateMileage'
 
 function Consumables() {
   const { data } = useConsumables()
@@ -10,10 +11,12 @@ function Consumables() {
   if (data) {
     return (
       <div className="p-4">
-        <div>
+        <div className="p-4">
           <Link to="/consumables/add">
             <button className="btn-clear">Add your item</button>
           </Link>
+
+          <UpdateMileage />
         </div>
         <div>
           <ul className="flex w-full flex-wrap gap-4">
