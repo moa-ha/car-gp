@@ -3,27 +3,12 @@ import {
   useQuery,
   useMutation,
   useQueryClient,
-  MutationFunction,
   UseQueryResult,
 } from '@tanstack/react-query'
 
 import * as api from '../apis/consumables'
 import { Consumable, ConsumableData } from '../../models/consumable'
 import { useAuth0 } from '@auth0/auth0-react'
-
-export function useConsumablesMutation<TData = unknown, TVariables = unknown>(
-  mutationFn: MutationFunction<TData, TVariables>,
-) {
-  const queryClient = useQueryClient()
-  const mutation = useMutation({
-    mutationFn,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['consumables'] })
-    },
-  })
-
-  return mutation
-}
 
 export function useConsumables() {
   const { getAccessTokenSilently } = useAuth0()
