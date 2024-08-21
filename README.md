@@ -2,7 +2,7 @@
 
 <b>App to record car's status.</b><br>
 
-This project is from my personal experience where I needed assistance with car's status. This app is using similar stack as my previous projects and additionally JWT, Vitest, and Tailwind styling.
+This project is from my personal experience where I needed assistance with car's status. This app is using similar stack as my previous projects and additionally JWT, and Tailwind styling.
 
 ### Goal
 
