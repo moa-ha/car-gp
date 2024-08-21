@@ -9,3 +9,12 @@ export function useGuestConsumables() {
     queryFn: () => api.guestConsumables(),
   })
 }
+
+export function useGetConsumableByIdForGuest(id: number) {
+  return useQuery({
+    queryKey: ['guestConsumable', id],
+    queryFn: async () => {
+      return api.getConsumableByIdForGuest(id)
+    },
+  })
+}
