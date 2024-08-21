@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import * as api from '../apis/maintenance'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Rego, Wof } from '../../models/maintenance'
+import { Rego, Wof, Km } from '../../models/maintenance'
 
 export function useMaintenance() {
   const { getAccessTokenSilently } = useAuth0()
@@ -40,6 +40,19 @@ export function useUpdateRego() {
     mutationFn: async (rego: Rego) => {
       const token = await getAccessTokenSilently()
       return api.updateRego({ rego, token })
+    },
+    onSuccess: () => client.invalidateQueries({ queryKey: ['maintenance'] }),
+  })
+}
+
+export function useUpdateKm() {
+  const { getAccessTokenSilently } = useAuth0()
+  const client = useQueryClient()
+
+  return useMutation({
+    mutationFn: async (averageKm: Km) => {
+      const token = await getAccessTokenSilently()
+      return api.updateKm({ averageKm, token })
     },
     onSuccess: () => client.invalidateQueries({ queryKey: ['maintenance'] }),
   })

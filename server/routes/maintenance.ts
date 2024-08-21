@@ -35,10 +35,24 @@ router.patch('/', async (req: JwtRequest, res) => {
   const data = req.body
   try {
     await db.updateRego(id, data)
-    res.status(StatusCodes.OK).json({ message: 'Rgo updated successfully' })
+    res.status(StatusCodes.OK).json({ message: 'Rego updated successfully' })
   } catch (e) {
     console.log(e)
     res.status(500).json({ message: 'Error in updating rego' })
+  }
+})
+
+router.patch('/', async (req: JwtRequest, res) => {
+  const id = String(req.auth?.sub)
+  const data = req.body
+  try {
+    await db.updateKm(id, data)
+    res
+      .status(StatusCodes.OK)
+      .json({ message: 'Annual mileage updated successfully' })
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({ message: 'Error in updating annual mileage' })
   }
 })
 

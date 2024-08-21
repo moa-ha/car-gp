@@ -76,22 +76,3 @@ export async function editConsumable({
     .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
 }
-
-//L EAVE IT FOR FUTURE REFERENCE
-// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
-// function logError(err: Error) {
-//   console.log(err)
-//   if (err.message === 'Username Taken') {
-//     throw new Error('Username already taken - please choose another')
-//   } else if (err.message === 'Forbidden') {
-//     throw new Error(
-//       'Only the user who added the fruit may update and delete it',
-//     )
-//   } else {
-//     console.error('Error consuming the API (in client/api.js):', err.message)
-//     throw err
-//   }
-// }
-
-//needs function review
