@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom'
 import RegoSchedule from '../../components/Maintenance/RegoSchedule'
 import WofSchedule from '../../components/Maintenance/WofSchedule'
 import { useMaintenance } from '../../hooks/useMaintenance'
-import SignIn from '../SignIn'
+import SignIn from '../../components/SignIn'
+import Loading from '../../components/Loading'
 
 function Maintenance() {
-  const { data } = useMaintenance()
+  const { data, isLoading } = useMaintenance()
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   if (data) {
     return (

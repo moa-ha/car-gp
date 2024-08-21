@@ -1,9 +1,12 @@
 import { useGuestConsumables } from '../../hooks/useGuest'
 import DateInput from '../../components/Consumables/DateInput'
+import Loading from '../../components/Loading'
 
 function Guest() {
-  const { data } = useGuestConsumables()
-
+  const { isLoading, data } = useGuestConsumables()
+  if (isLoading) {
+    return <Loading />
+  }
   return (
     <div className="p-4">
       <div>
