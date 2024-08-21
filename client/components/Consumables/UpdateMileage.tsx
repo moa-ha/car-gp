@@ -20,6 +20,7 @@ export default function UpdateMileage() {
     if (averageKm !== null) {
       mutation.mutate({ averageKm })
     }
+    alert('Successfully saved and re-calculated accordingly')
   }
   return (
     <>

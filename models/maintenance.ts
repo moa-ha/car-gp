@@ -12,8 +12,8 @@ export interface Wof {
 }
 
 export interface Rego {
-  rego: string
-  regoDue: string
+  rego: string | null
+  regoDue: string | null
 }
 
 export interface Km {
